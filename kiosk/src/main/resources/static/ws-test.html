@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <title>주문 실시간 알림 테스트</title>
+  <style>
+    body { font-family: sans-serif; max-width: 720px; margin: 2rem auto; padding: 0 1rem; }
+    #log { border: 1px solid #ccc; min-height: 200px; padding: 1rem; background: #fafafa; white-space: pre-wrap; }
+    .ok { color: #0a0; }
+    .err { color: #c00; }
+  </style>
+  <script src="https://cdn.jsdelivr.net/npm/sockjs-client@1/dist/sockjs.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/stompjs@2.3.3/lib/stomp.min.js"></script>
+</head>
+<body>
+  <h1>/topic/orders 구독 테스트</h1>
+  <p>앱을 띄운 뒤 다른 클라이언트에서 주문을 생성하면 아래에 JSON이 찍힙니다.</p>
+  <p id="status">연결 중…</p>
+  <div id="log"></div>
+
+  <script>
+    const logEl = document.getElementById('log');
+    const statusEl = document.getElementById('status');
+
+    function append(line, cls) {
+      const span = document.createElement('div');
+      if (cls) span.className = cls;
+      span.textContent = line;
+      logEl.appendChild(span);
+    }
+
+    const socket = new SockJS('/ws');
+    const stompClient = Stomp.over(socket);
+    stompClient.debug = null;
+
+    stompClient.connect({}, function () {
+      statusEl.textContent = '연결됨 — /topic/orders 구독 중';
+      statusEl.className = 'ok';
+      stompClient.subscribe('/topic/orders', function (message) {
+        append(message.body, 'ok');
+      });
+    }, function (err) {
+      statusEl.textContent = '연결 실패: ' + (err && err.toString ? err.toString() : 'unknown');
+      statusEl.className = 'err';
+    });
+  </script>
+</body>
+</html>

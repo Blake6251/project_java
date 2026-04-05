@@ -1,0 +1,25 @@
+# EC2 + RDS(MySQL 8) 등 운영 환경 — 환경변수로 주입
+spring:
+  datasource:
+    # RDS는 보통 SSL 권장 — 필요 시 &useSSL=true&requireSSL=true 등 추가
+    url: jdbc:mysql://${RDS_HOSTNAME}:${RDS_PORT:3306}/${RDS_DB_NAME:kiosk_db}?serverTimezone=Asia/Seoul&characterEncoding=UTF-8
+    username: ${RDS_USERNAME}
+    password: ${RDS_PASSWORD}
+    driver-class-name: com.mysql.cj.jdbc.Driver
+  jpa:
+    hibernate:
+      ddl-auto: validate
+    show-sql: false
+    database-platform: org.hibernate.dialect.MySQLDialect
+    properties:
+      hibernate:
+        format_sql: false
+
+jwt:
+  secret: ${JWT_SECRET}
+  expiration-ms: ${JWT_EXPIRATION_MS:86400000}
+
+logging:
+  level:
+    root: INFO
+    com.project.kiosk: INFO

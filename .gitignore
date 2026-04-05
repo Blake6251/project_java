@@ -1,0 +1,14 @@
+# 로컬 면접 준비·정리용 — 원격 저장소에 올리지 않음
+interview/
+
+# 프론트 의존성 (용량·불필요)
+node_modules/
+
+# 환경 변수·비밀 (예시 파일만 커밋)
+.env
+.env.*
+!.env.example
+
+# 로컬 로그
+kiosk/logs/
+*.log
