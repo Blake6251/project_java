@@ -23,7 +23,7 @@ services:
       - "6379:6379"
 
   app:
-    build: .
+    image: ${DOCKER_USERNAME}/kiosk:latest
     container_name: kiosk-app
     restart: unless-stopped
     ports:

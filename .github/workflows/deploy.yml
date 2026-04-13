@@ -7,6 +7,9 @@ on:
 jobs:
   build-test:
     runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: kiosk
     steps:
       - name: 소스 체크아웃
         uses: actions/checkout@v4
@@ -43,7 +46,7 @@ jobs:
       - name: 도커 이미지 빌드 및 푸시
         uses: docker/build-push-action@v6
         with:
-          context: .
+          context: kiosk
           push: true
           tags: |
             ${{ secrets.DOCKER_USERNAME }}/kiosk:latest
@@ -62,6 +65,7 @@ jobs:
           script: |
             set -e
             cd ~/kiosk || exit 1
+            export DOCKER_USERNAME="${{ secrets.DOCKER_USERNAME }}"
             docker compose pull
             docker compose up -d
             docker image prune -f

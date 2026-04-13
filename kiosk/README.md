@@ -115,17 +115,17 @@ docker compose up --build
 
 예: `~/.bashrc` 또는 systemd `EnvironmentFile`에 export.
 
-### 배포 스크립트
+### 배포 방식 (Docker Compose)
+
+EC2의 `~/kiosk` 경로에 `docker-compose.yml`, `.env`를 준비한 뒤 실행합니다.
 
 ```bash
-chmod +x deploy.sh
-./deploy.sh
+docker compose pull
+docker compose up -d
 ```
 
-- `git pull` 후 `./gradlew bootJar -x test`, 기존 jar 프로세스 종료, `nohup java -jar ... --spring.profiles.active=prod`  
-- 로그: `logs/app.log`
-
-**메모리 부족**으로 EC2에서 빌드가 실패하면 로컬에서 `bootJar` 후 `build/libs/*.jar`만 `scp`로 올려 실행해도 됩니다.
+- `app` 이미지는 `${DOCKER_USERNAME}/kiosk:latest`를 사용합니다.
+- `.env`에 `DOCKER_USERNAME`, `DB_PASSWORD`, `JWT_SECRET` 값을 반드시 설정해야 합니다.
 
 ## GitHub Actions CI/CD
 
@@ -135,7 +135,7 @@ chmod +x deploy.sh
 2. Docker 이미지 빌드 및 Docker Hub push
 3. EC2 SSH 접속 후 `docker compose pull && docker compose up -d`
 
-워크플로우 파일: `.github/workflows/deploy.yml`
+워크플로우 파일: 저장소 루트 `.github/workflows/deploy.yml`
 
 ### GitHub Secrets
 
@@ -167,7 +167,3 @@ kiosk/
     ├── application-prod.yml
     └── static/ws-test.html
 ```
-
-## 라이선스
-
-학습·포트폴리오 용도.
