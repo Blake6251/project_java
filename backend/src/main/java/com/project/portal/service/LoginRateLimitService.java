@@ -1,6 +1,6 @@
-package com.project.kiosk.service;
+package com.project.portal.service;
 
-import com.project.kiosk.config.RateLimitProperties;
+import com.project.portal.config.RateLimitProperties;
 import java.time.Duration;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -8,8 +8,8 @@ import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.stereotype.Service;
 
 /**
- * 로그인 실패 횟수 및 IP 차단 (Redis).
- * Redis 장애 시 fail-open (차단하지 않음).
+ * 濡쒓렇???ㅽ뙣 ?잛닔 諛?IP 李⑤떒 (Redis).
+ * Redis ?μ븷 ??fail-open (李⑤떒?섏? ?딆쓬).
  */
 @Slf4j
 @Service
@@ -22,7 +22,7 @@ public class LoginRateLimitService {
     private final StringRedisTemplate stringRedisTemplate;
     private final RateLimitProperties rateLimitProperties;
 
-    /** 현재 IP가 로그인 차단 상태인지 */
+    /** ?꾩옱 IP媛 濡쒓렇??李⑤떒 ?곹깭?몄? */
     public boolean isBlocked(String clientIp) {
         if (!rateLimitProperties.isEnabled()) {
             return false;
@@ -36,7 +36,7 @@ public class LoginRateLimitService {
         }
     }
 
-    /** 로그인 실패 1회 기록. 임계 도달 시 BLOCK 키 설정 */
+    /** 濡쒓렇???ㅽ뙣 1??湲곕줉. ?꾧퀎 ?꾨떖 ??BLOCK ???ㅼ젙 */
     public void recordFailedAttempt(String clientIp) {
         if (!rateLimitProperties.isEnabled()) {
             return;
@@ -57,7 +57,7 @@ public class LoginRateLimitService {
         }
     }
 
-    /** 로그인 성공 시 카운트·차단 해제 */
+    /** 濡쒓렇???깃났 ??移댁슫?맞룹감???댁젣 */
     public void clearFailures(String clientIp) {
         if (!rateLimitProperties.isEnabled()) {
             return;

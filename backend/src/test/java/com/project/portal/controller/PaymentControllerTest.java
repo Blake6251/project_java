@@ -1,4 +1,4 @@
-package com.project.kiosk.controller;
+package com.project.portal.controller;
 
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.ArgumentMatchers.eq;
@@ -10,18 +10,18 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.project.kiosk.config.JwtFilter;
-import com.project.kiosk.config.JwtUtil;
-import com.project.kiosk.config.CorsConfig;
-import com.project.kiosk.config.SecurityConfig;
-import com.project.kiosk.domain.OrderStatus;
-import com.project.kiosk.domain.PaymentStatus;
-import com.project.kiosk.dto.request.PaymentCreateRequest;
-import com.project.kiosk.dto.request.PaymentStatusUpdateRequest;
-import com.project.kiosk.dto.response.PaymentResponse;
-import com.project.kiosk.exception.GlobalExceptionHandler;
-import com.project.kiosk.service.PaymentService;
-import com.project.kiosk.service.TokenBlacklistService;
+import com.project.portal.config.JwtFilter;
+import com.project.portal.config.JwtUtil;
+import com.project.portal.config.CorsConfig;
+import com.project.portal.config.SecurityConfig;
+import com.project.portal.domain.OrderStatus;
+import com.project.portal.domain.PaymentStatus;
+import com.project.portal.dto.request.PaymentCreateRequest;
+import com.project.portal.dto.request.PaymentStatusUpdateRequest;
+import com.project.portal.dto.response.PaymentResponse;
+import com.project.portal.exception.GlobalExceptionHandler;
+import com.project.portal.service.PaymentService;
+import com.project.portal.service.TokenBlacklistService;
 import java.time.LocalDateTime;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -57,7 +57,7 @@ class PaymentControllerTest {
     private PaymentService paymentService;
 
     @Test
-    @DisplayName("POST /api/payments 성공")
+    @DisplayName("POST /api/payments ?깃났")
     @WithMockUser(username = "user1", roles = "USER")
     void create_ok() throws Exception {
         PaymentCreateRequest req = new PaymentCreateRequest();
@@ -84,14 +84,14 @@ class PaymentControllerTest {
     }
 
     @Test
-    @DisplayName("GET /api/payments/{id} 미인증 실패")
+    @DisplayName("GET /api/payments/{id} 誘몄씤利??ㅽ뙣")
     void findById_unauthorized() throws Exception {
         mockMvc.perform(get("/api/payments/1"))
                 .andExpect(status().isUnauthorized());
     }
 
     @Test
-    @DisplayName("PATCH /api/payments/{id}/status 관리자 성공")
+    @DisplayName("PATCH /api/payments/{id}/status 愿由ъ옄 ?깃났")
     @WithMockUser(username = "admin1", roles = "ADMIN")
     void updateStatus_admin_ok() throws Exception {
         PaymentStatusUpdateRequest req = new PaymentStatusUpdateRequest();

@@ -1,4 +1,4 @@
-package com.project.kiosk.config;
+package com.project.portal.config;
 
 import io.swagger.v3.oas.models.Components;
 import io.swagger.v3.oas.models.OpenAPI;
@@ -12,13 +12,13 @@ import org.springframework.context.annotation.Configuration;
 public class SwaggerConfig {
 
     @Bean
-    public OpenAPI kioskOpenApi() {
+    public OpenAPI portalOpenApi() {
         String schemeName = "bearerAuth";
 
         return new OpenAPI()
                 .info(new Info()
-                        .title("Kiosk API")
-                        .description("키오스크 주문/인증 API 문서")
+                        .title("Portal API")
+                        .description("?ㅼ삤?ㅽ겕 二쇰Ц/?몄쬆 API 臾몄꽌")
                         .version("v1"))
                 .addSecurityItem(new SecurityRequirement().addList(schemeName))
                 .components(new Components()

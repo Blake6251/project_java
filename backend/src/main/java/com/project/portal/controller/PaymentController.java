@@ -1,9 +1,9 @@
-package com.project.kiosk.controller;
+package com.project.portal.controller;
 
-import com.project.kiosk.dto.request.PaymentCreateRequest;
-import com.project.kiosk.dto.request.PaymentStatusUpdateRequest;
-import com.project.kiosk.dto.response.PaymentResponse;
-import com.project.kiosk.service.PaymentService;
+import com.project.portal.dto.request.PaymentCreateRequest;
+import com.project.portal.dto.request.PaymentStatusUpdateRequest;
+import com.project.portal.dto.response.PaymentResponse;
+import com.project.portal.service.PaymentService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.Valid;
@@ -22,12 +22,12 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @RequestMapping("/api/payments")
 @RequiredArgsConstructor
-@Tag(name = "Payment", description = "결제 API")
+@Tag(name = "Payment", description = "寃곗젣 API")
 public class PaymentController {
 
     private final PaymentService paymentService;
 
-    @Operation(summary = "결제 생성", description = "주문에 대한 결제를 생성합니다.")
+    @Operation(summary = "寃곗젣 ?앹꽦", description = "二쇰Ц?????寃곗젣瑜??앹꽦?⑸땲??")
     @PostMapping
     public ResponseEntity<PaymentResponse> create(
             @Valid @RequestBody PaymentCreateRequest request,
@@ -38,7 +38,7 @@ public class PaymentController {
         return ResponseEntity.ok(paymentService.create(request, authentication.getName(), isAdmin));
     }
 
-    @Operation(summary = "결제 조회", description = "본인 결제 또는 관리자 권한으로 결제를 조회합니다.")
+    @Operation(summary = "寃곗젣 議고쉶", description = "蹂몄씤 寃곗젣 ?먮뒗 愿由ъ옄 沅뚰븳?쇰줈 寃곗젣瑜?議고쉶?⑸땲??")
     @GetMapping("/{id}")
     public ResponseEntity<PaymentResponse> findById(
             @PathVariable Long id,
@@ -49,7 +49,7 @@ public class PaymentController {
         return ResponseEntity.ok(paymentService.findById(id, authentication.getName(), isAdmin));
     }
 
-    @Operation(summary = "결제 상태 변경(관리자)", description = "관리자 권한으로 결제 상태를 변경합니다.")
+    @Operation(summary = "寃곗젣 ?곹깭 蹂寃?愿由ъ옄)", description = "愿由ъ옄 沅뚰븳?쇰줈 寃곗젣 ?곹깭瑜?蹂寃쏀빀?덈떎.")
     @PatchMapping("/{id}/status")
     @PreAuthorize("hasRole('ADMIN')")
     public ResponseEntity<PaymentResponse> updateStatus(

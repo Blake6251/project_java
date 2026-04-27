@@ -1,1 +1,1 @@
-package com.project.kiosk.repository;
+package com.project.portal.repository;

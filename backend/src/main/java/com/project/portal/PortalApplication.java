@@ -1,13 +1,13 @@
-package com.project.kiosk;
+package com.project.portal;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class KioskApplication {
+public class PortalApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(KioskApplication.class, args);
+		SpringApplication.run(PortalApplication.class, args);
 	}
 
 }

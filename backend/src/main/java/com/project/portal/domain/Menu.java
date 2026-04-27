@@ -1,4 +1,4 @@
-package com.project.kiosk.domain;
+package com.project.portal.domain;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;

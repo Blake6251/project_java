@@ -1,4 +1,4 @@
-package com.project.kiosk.logging;
+package com.project.portal.logging;
 
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;

@@ -1,4 +1,4 @@
-package com.project.kiosk.dto.request;
+package com.project.portal.dto.request;
 
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.validation.constraints.NotBlank;
@@ -12,11 +12,11 @@ import lombok.Setter;
 public class OrderRequest {
 
     @NotBlank
-    @Schema(description = "메뉴 이름", example = "아메리카노")
+    @Schema(description = "Menu name", example = "Americano")
     private String menuName;
 
     @NotNull
     @Positive
-    @Schema(description = "수량", example = "2")
+    @Schema(description = "Quantity", example = "2")
     private Integer quantity;
 }

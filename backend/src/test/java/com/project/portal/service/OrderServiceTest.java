@@ -1,19 +1,19 @@
-package com.project.kiosk.service;
+package com.project.portal.service;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.when;
 
-import com.project.kiosk.domain.Order;
-import com.project.kiosk.domain.OrderStatus;
-import com.project.kiosk.domain.User;
-import com.project.kiosk.dto.request.OrderRequest;
-import com.project.kiosk.dto.response.OrderResponse;
-import com.project.kiosk.exception.CustomException;
-import com.project.kiosk.exception.ErrorCode;
-import com.project.kiosk.repository.OrderRepository;
-import com.project.kiosk.repository.UserRepository;
+import com.project.portal.domain.Order;
+import com.project.portal.domain.OrderStatus;
+import com.project.portal.domain.User;
+import com.project.portal.dto.request.OrderRequest;
+import com.project.portal.dto.response.OrderResponse;
+import com.project.portal.exception.CustomException;
+import com.project.portal.exception.ErrorCode;
+import com.project.portal.repository.OrderRepository;
+import com.project.portal.repository.UserRepository;
 import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Optional;
@@ -26,7 +26,7 @@ import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.context.ApplicationEventPublisher;
 import org.springframework.security.access.AccessDeniedException;
 
-/** OrderService 단위 테스트 (Mockito). 주문 생성·조회·상태 변경 및 권한 예외. */
+/** OrderService ?⑥쐞 ?뚯뒪??(Mockito). 二쇰Ц ?앹꽦쨌議고쉶쨌?곹깭 蹂寃?諛?沅뚰븳 ?덉쇅. */
 @ExtendWith(MockitoExtension.class)
 class OrderServiceTest {
 
@@ -43,10 +43,10 @@ class OrderServiceTest {
     private OrderService orderService;
 
     @Test
-    @DisplayName("주문 생성 성공: 저장 후 WebSocket 브로드캐스트")
+    @DisplayName("二쇰Ц ?앹꽦 ?깃났: ?????WebSocket 釉뚮줈?쒖틦?ㅽ듃")
     void create_success() {
         OrderRequest request = new OrderRequest();
-        request.setMenuName("아메리카노");
+        request.setMenuName("Americano");
         request.setQuantity(2);
 
         User user = User.builder()
@@ -59,7 +59,7 @@ class OrderServiceTest {
 
         Order saved = Order.builder()
                 .id(10L)
-                .menuName("아메리카노")
+                .menuName("Americano")
                 .quantity(2)
                 .status(OrderStatus.CREATED)
                 .user(user)
@@ -72,14 +72,14 @@ class OrderServiceTest {
         OrderResponse result = orderService.create(request, "user1");
 
         assertThat(result.getId()).isEqualTo(10L);
-        assertThat(result.getMenuName()).isEqualTo("아메리카노");
+        assertThat(result.getMenuName()).isEqualTo("Americano");
     }
 
     @Test
-    @DisplayName("주문 생성 실패: 사용자 없음")
+    @DisplayName("二쇰Ц ?앹꽦 ?ㅽ뙣: ?ъ슜???놁쓬")
     void create_userNotFound_throws() {
         OrderRequest request = new OrderRequest();
-        request.setMenuName("라떼");
+        request.setMenuName("?쇰뼹");
         request.setQuantity(1);
 
         when(userRepository.findByUsername("ghost")).thenReturn(Optional.empty());
@@ -91,7 +91,7 @@ class OrderServiceTest {
     }
 
     @Test
-    @DisplayName("단건 조회 성공: 본인 주문")
+    @DisplayName("?④굔 議고쉶 ?깃났: 蹂몄씤 二쇰Ц")
     void findById_ownOrder_success() {
         User user = User.builder()
                 .id(1L)
@@ -103,7 +103,7 @@ class OrderServiceTest {
 
         Order order = Order.builder()
                 .id(5L)
-                .menuName("콜드브루")
+                .menuName("肄쒕뱶釉뚮（")
                 .quantity(1)
                 .status(OrderStatus.CREATED)
                 .user(user)
@@ -118,7 +118,7 @@ class OrderServiceTest {
     }
 
     @Test
-    @DisplayName("단건 조회 성공: 관리자는 타인 주문 조회 가능")
+    @DisplayName("Find by id success: admin can access others")
     void findById_admin_success() {
         User user = User.builder()
                 .id(2L)
@@ -130,7 +130,7 @@ class OrderServiceTest {
 
         Order order = Order.builder()
                 .id(7L)
-                .menuName("에스프레소")
+                .menuName("Espresso")
                 .quantity(1)
                 .status(OrderStatus.IN_PROGRESS)
                 .user(user)
@@ -145,7 +145,7 @@ class OrderServiceTest {
     }
 
     @Test
-    @DisplayName("단건 조회 실패: 타인 주문 (일반 사용자)")
+    @DisplayName("?④굔 議고쉶 ?ㅽ뙣: ???二쇰Ц (?쇰컲 ?ъ슜??")
     void findById_forbidden_otherUser() {
         User user = User.builder()
                 .id(2L)
@@ -157,7 +157,7 @@ class OrderServiceTest {
 
         Order order = Order.builder()
                 .id(8L)
-                .menuName("티")
+                .menuName("Tea")
                 .quantity(1)
                 .status(OrderStatus.CREATED)
                 .user(user)
@@ -171,7 +171,7 @@ class OrderServiceTest {
     }
 
     @Test
-    @DisplayName("단건 조회 실패: 주문 없음")
+    @DisplayName("?④굔 議고쉶 ?ㅽ뙣: 二쇰Ц ?놁쓬")
     void findById_orderNotFound_throws() {
         when(orderRepository.findByIdWithUser(99L)).thenReturn(Optional.empty());
 
@@ -182,7 +182,7 @@ class OrderServiceTest {
     }
 
     @Test
-    @DisplayName("관리자 전체 목록")
+    @DisplayName("愿由ъ옄 ?꾩껜 紐⑸줉")
     void findAllForAdmin_returnsList() {
         User user = User.builder()
                 .id(1L)
@@ -210,7 +210,7 @@ class OrderServiceTest {
     }
 
     @Test
-    @DisplayName("상태 변경 성공")
+    @DisplayName("?곹깭 蹂寃??깃났")
     void updateStatus_success() {
         User user = User.builder()
                 .id(1L)
@@ -237,7 +237,7 @@ class OrderServiceTest {
     }
 
     @Test
-    @DisplayName("상태 변경 실패: 주문 없음")
+    @DisplayName("?곹깭 蹂寃??ㅽ뙣: 二쇰Ц ?놁쓬")
     void updateStatus_orderNotFound_throws() {
         when(orderRepository.findByIdWithUser(100L)).thenReturn(Optional.empty());
 

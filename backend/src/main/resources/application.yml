@@ -1,8 +1,8 @@
 spring:
   application:
-    name: kiosk
+    name: portal
   datasource:
-    url: ${SPRING_DATASOURCE_URL:jdbc:mysql://127.0.0.1:3307/kiosk_db?serverTimezone=Asia/Seoul&characterEncoding=UTF-8&allowPublicKeyRetrieval=true&useSSL=false}
+    url: ${SPRING_DATASOURCE_URL:jdbc:mysql://127.0.0.1:3307/portal_db?serverTimezone=Asia/Seoul&characterEncoding=UTF-8&allowPublicKeyRetrieval=true&useSSL=false}
     username: ${DB_USERNAME:root}
     password: ${DB_PASSWORD:1313}
     driver-class-name: ${DB_DRIVER:com.mysql.cj.jdbc.Driver}
@@ -59,7 +59,7 @@ file:
   upload:
     path: ${FILE_UPLOAD_PATH:uploads}
 
-# Rate Limit (테스트는 application-test.yml 에서 비활성화)
+# Rate Limit (?뚯뒪?몃뒗 application-test.yml ?먯꽌 鍮꾪솢?깊솕)
 app:
   ratelimit:
     enabled: true

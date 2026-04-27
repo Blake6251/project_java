@@ -1,6 +1,6 @@
-package com.project.kiosk.repository;
+package com.project.portal.repository;
 
-import com.project.kiosk.domain.Notification;
+import com.project.portal.domain.Notification;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;

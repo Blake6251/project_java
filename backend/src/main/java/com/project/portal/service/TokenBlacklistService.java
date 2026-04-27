@@ -1,4 +1,4 @@
-package com.project.kiosk.service;
+package com.project.portal.service;
 
 import java.time.Duration;
 import lombok.RequiredArgsConstructor;
@@ -28,7 +28,7 @@ public class TokenBlacklistService {
         try {
             return Boolean.TRUE.equals(redisTemplate.hasKey(PREFIX + token));
         } catch (Exception e) {
-            // Redis 장애 시 전체 인증을 막지 않기 위해 블랙리스트 미존재로 처리한다.
+            // Redis ?μ븷 ???꾩껜 ?몄쬆??留됱? ?딄린 ?꾪빐 釉붾옓由ъ뒪??誘몄〈?щ줈 泥섎━?쒕떎.
             log.warn("Redis unavailable - blacklist check skipped");
             return false;
         }

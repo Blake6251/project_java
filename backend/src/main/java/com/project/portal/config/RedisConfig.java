@@ -1,4 +1,4 @@
-package com.project.kiosk.config;
+package com.project.portal.config;
 
 import java.time.Duration;
 import org.springframework.cache.CacheManager;
@@ -18,7 +18,7 @@ public class RedisConfig {
 
     @Bean
     public CacheManager cacheManager(RedisConnectionFactory redisConnectionFactory) {
-        // 주문 목록 캐시는 60초 TTL로 운영한다.
+        // 二쇰Ц 紐⑸줉 罹먯떆??60珥?TTL濡??댁쁺?쒕떎.
         RedisCacheConfiguration config = RedisCacheConfiguration.defaultCacheConfig()
                 .entryTtl(Duration.ofSeconds(60))
                 .serializeKeysWith(RedisSerializationContext.SerializationPair.fromSerializer(new StringRedisSerializer()))

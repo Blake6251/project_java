@@ -1,6 +1,6 @@
-package com.project.kiosk.dto.response;
+package com.project.portal.dto.response;
 
-import com.project.kiosk.domain.NotificationType;
+import com.project.portal.domain.NotificationType;
 import java.time.LocalDateTime;
 import lombok.AllArgsConstructor;
 import lombok.Builder;

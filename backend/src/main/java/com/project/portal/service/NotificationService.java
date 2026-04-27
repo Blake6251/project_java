@@ -1,12 +1,12 @@
-package com.project.kiosk.service;
+package com.project.portal.service;
 
-import com.project.kiosk.domain.Notification;
-import com.project.kiosk.domain.NotificationType;
-import com.project.kiosk.dto.response.NotificationResponse;
-import com.project.kiosk.dto.response.PageResponse;
-import com.project.kiosk.exception.CustomException;
-import com.project.kiosk.exception.ErrorCode;
-import com.project.kiosk.repository.NotificationRepository;
+import com.project.portal.domain.Notification;
+import com.project.portal.domain.NotificationType;
+import com.project.portal.dto.response.NotificationResponse;
+import com.project.portal.dto.response.PageResponse;
+import com.project.portal.exception.CustomException;
+import com.project.portal.exception.ErrorCode;
+import com.project.portal.repository.NotificationRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;

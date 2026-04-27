@@ -1,14 +1,14 @@
-package com.project.kiosk.service;
+package com.project.portal.service;
 
-import com.project.kiosk.config.JwtUtil;
-import com.project.kiosk.domain.User;
-import com.project.kiosk.dto.request.LoginRequest;
-import com.project.kiosk.dto.request.RegisterRequest;
-import com.project.kiosk.dto.response.LoginResponse;
-import com.project.kiosk.exception.CustomException;
-import com.project.kiosk.exception.ErrorCode;
-import com.project.kiosk.config.ClientIpResolver;
-import com.project.kiosk.repository.UserRepository;
+import com.project.portal.config.JwtUtil;
+import com.project.portal.domain.User;
+import com.project.portal.dto.request.LoginRequest;
+import com.project.portal.dto.request.RegisterRequest;
+import com.project.portal.dto.response.LoginResponse;
+import com.project.portal.exception.CustomException;
+import com.project.portal.exception.ErrorCode;
+import com.project.portal.config.ClientIpResolver;
+import com.project.portal.repository.UserRepository;
 import jakarta.servlet.http.HttpServletRequest;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -76,17 +76,17 @@ public class AuthService {
 
     public void logout(String authorizationHeader) {
         if (authorizationHeader == null || !authorizationHeader.startsWith("Bearer ")) {
-            throw new CustomException(ErrorCode.INVALID_INPUT, "Authorization 헤더 형식이 올바르지 않습니다.");
+            throw new CustomException(ErrorCode.INVALID_INPUT, "Authorization ?ㅻ뜑 ?뺤떇???щ컮瑜댁? ?딆뒿?덈떎.");
         }
 
         String token = authorizationHeader.substring(7);
         if (!jwtUtil.isTokenValid(token)) {
-            throw new CustomException(ErrorCode.UNAUTHORIZED, "유효하지 않은 토큰입니다.");
+            throw new CustomException(ErrorCode.UNAUTHORIZED, "?좏슚?섏? ?딆? ?좏겙?낅땲??");
         }
 
         long remainingMillis = jwtUtil.getRemainingMillis(token);
         if (remainingMillis <= 0) {
-            throw new CustomException(ErrorCode.UNAUTHORIZED, "만료된 토큰입니다.");
+            throw new CustomException(ErrorCode.UNAUTHORIZED, "留뚮즺???좏겙?낅땲??");
         }
 
         tokenBlacklistService.blacklist(token, remainingMillis);

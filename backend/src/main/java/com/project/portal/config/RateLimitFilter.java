@@ -1,9 +1,9 @@
-package com.project.kiosk.config;
+package com.project.portal.config;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.project.kiosk.exception.ErrorCode;
-import com.project.kiosk.exception.ErrorResponse;
-import com.project.kiosk.service.LoginRateLimitService;
+import com.project.portal.exception.ErrorCode;
+import com.project.portal.exception.ErrorResponse;
+import com.project.portal.service.LoginRateLimitService;
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
@@ -17,8 +17,8 @@ import org.springframework.http.MediaType;
 import org.springframework.web.filter.OncePerRequestFilter;
 
 /**
- * API 분당 요청 제한 + 로그인 엔드포인트 사전 차단.
- * TraceLoggingFilter(HIGHEST) 다음에 동작하도록 Order 지정.
+ * API 遺꾨떦 ?붿껌 ?쒗븳 + 濡쒓렇???붾뱶?ъ씤???ъ쟾 李⑤떒.
+ * TraceLoggingFilter(HIGHEST) ?ㅼ쓬???숈옉?섎룄濡?Order 吏??
  */
 @Slf4j
 @RequiredArgsConstructor
@@ -69,7 +69,7 @@ public class RateLimitFilter extends OncePerRequestFilter {
         filterChain.doFilter(request, response);
     }
 
-    /** 분당 카운터 증가. 초과 시 false */
+    /** 遺꾨떦 移댁슫??利앷?. 珥덇낵 ??false */
     private boolean tryConsumeApiQuota(String ip, HttpServletResponse response) throws IOException {
         try {
             String key = API_KEY_PREFIX + ip;

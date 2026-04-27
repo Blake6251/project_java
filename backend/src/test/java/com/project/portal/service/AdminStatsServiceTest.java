@@ -1,12 +1,12 @@
-package com.project.kiosk.service;
+package com.project.portal.service;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.mockito.Mockito.when;
 
-import com.project.kiosk.domain.OrderStatus;
-import com.project.kiosk.dto.response.AdminStatsSummaryResponse;
-import com.project.kiosk.dto.response.DailyStatsResponse;
-import com.project.kiosk.repository.OrderRepository;
+import com.project.portal.domain.OrderStatus;
+import com.project.portal.dto.response.AdminStatsSummaryResponse;
+import com.project.portal.dto.response.DailyStatsResponse;
+import com.project.portal.repository.OrderRepository;
 import java.time.LocalDate;
 import java.util.List;
 import org.junit.jupiter.api.DisplayName;
@@ -26,7 +26,7 @@ class AdminStatsServiceTest {
     private AdminStatsService adminStatsService;
 
     @Test
-    @DisplayName("일자별 통계 조회")
+    @DisplayName("?쇱옄蹂??듦퀎 議고쉶")
     void getDailyStats_success() {
         when(orderRepository.findDailyStats()).thenReturn(List.<Object[]>of(
                 new Object[]{LocalDate.of(2026, 3, 31), 3L, 7L}
@@ -40,7 +40,7 @@ class AdminStatsServiceTest {
     }
 
     @Test
-    @DisplayName("상태별 통계 조회")
+    @DisplayName("?곹깭蹂??듦퀎 議고쉶")
     void getSummary_success() {
         when(orderRepository.countByStatus()).thenReturn(List.of(
                 new Object[]{OrderStatus.CREATED, 2L},

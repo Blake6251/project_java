@@ -1,6 +1,6 @@
-package com.project.kiosk.event;
+package com.project.portal.event;
 
-import com.project.kiosk.domain.Order;
+import com.project.portal.domain.Order;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 

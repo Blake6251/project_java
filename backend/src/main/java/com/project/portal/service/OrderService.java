@@ -1,18 +1,18 @@
-package com.project.kiosk.service;
+package com.project.portal.service;
 
-import com.project.kiosk.domain.Order;
-import com.project.kiosk.domain.OrderStatus;
-import com.project.kiosk.domain.User;
-import com.project.kiosk.dto.request.OrderSearchCondition;
-import com.project.kiosk.dto.request.OrderRequest;
-import com.project.kiosk.dto.response.OrderResponse;
-import com.project.kiosk.dto.response.PageResponse;
-import com.project.kiosk.event.OrderCreatedEvent;
-import com.project.kiosk.event.OrderStatusChangedEvent;
-import com.project.kiosk.exception.CustomException;
-import com.project.kiosk.exception.ErrorCode;
-import com.project.kiosk.repository.OrderRepository;
-import com.project.kiosk.repository.UserRepository;
+import com.project.portal.domain.Order;
+import com.project.portal.domain.OrderStatus;
+import com.project.portal.domain.User;
+import com.project.portal.dto.request.OrderSearchCondition;
+import com.project.portal.dto.request.OrderRequest;
+import com.project.portal.dto.response.OrderResponse;
+import com.project.portal.dto.response.PageResponse;
+import com.project.portal.event.OrderCreatedEvent;
+import com.project.portal.event.OrderStatusChangedEvent;
+import com.project.portal.exception.CustomException;
+import com.project.portal.exception.ErrorCode;
+import com.project.portal.repository.OrderRepository;
+import com.project.portal.repository.UserRepository;
 import java.util.List;
 import lombok.RequiredArgsConstructor;
 import org.springframework.cache.annotation.CacheEvict;
@@ -70,7 +70,7 @@ public class OrderService {
                 .build();
     }
 
-    /** 일반 사용자 본인 주문 목록(페이징) */
+    /** ?쇰컲 ?ъ슜??蹂몄씤 二쇰Ц 紐⑸줉(?섏씠吏? */
     @Transactional(readOnly = true)
     public PageResponse<OrderResponse> findMineForUser(String username, Pageable pageable) {
         Page<Order> page = orderRepository.findByUser_UsernameOrderByCreatedAtDesc(username, pageable);
@@ -88,7 +88,7 @@ public class OrderService {
                 .orElseThrow(() -> new CustomException(ErrorCode.ORDER_NOT_FOUND));
 
         if (!isAdmin && !order.getUser().getUsername().equals(username)) {
-            throw new AccessDeniedException("해당 주문을 조회할 권한이 없습니다.");
+            throw new AccessDeniedException("?대떦 二쇰Ц??議고쉶??沅뚰븳???놁뒿?덈떎.");
         }
 
         return toResponse(order);

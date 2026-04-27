@@ -1,4 +1,4 @@
-package com.project.kiosk.controller;
+package com.project.portal.controller;
 
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.doNothing;
@@ -9,18 +9,18 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.project.kiosk.config.CorsConfig;
-import com.project.kiosk.config.JwtFilter;
-import com.project.kiosk.config.JwtUtil;
-import com.project.kiosk.config.SecurityConfig;
-import com.project.kiosk.dto.request.LoginRequest;
-import com.project.kiosk.dto.request.RegisterRequest;
-import com.project.kiosk.dto.response.LoginResponse;
-import com.project.kiosk.exception.CustomException;
-import com.project.kiosk.exception.ErrorCode;
-import com.project.kiosk.exception.GlobalExceptionHandler;
-import com.project.kiosk.service.AuthService;
-import com.project.kiosk.service.TokenBlacklistService;
+import com.project.portal.config.CorsConfig;
+import com.project.portal.config.JwtFilter;
+import com.project.portal.config.JwtUtil;
+import com.project.portal.config.SecurityConfig;
+import com.project.portal.dto.request.LoginRequest;
+import com.project.portal.dto.request.RegisterRequest;
+import com.project.portal.dto.response.LoginResponse;
+import com.project.portal.exception.CustomException;
+import com.project.portal.exception.ErrorCode;
+import com.project.portal.exception.GlobalExceptionHandler;
+import com.project.portal.service.AuthService;
+import com.project.portal.service.TokenBlacklistService;
 import jakarta.servlet.http.HttpServletRequest;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -34,7 +34,7 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
 
-/** AuthController MockMvc 테스트. SecurityConfig·JwtFilter 포함, 검증·비즈니스 예외 응답. */
+/** AuthController MockMvc ?뚯뒪?? SecurityConfig쨌JwtFilter ?ы븿, 寃利씲룸퉬利덈땲???덉쇅 ?묐떟. */
 @WebMvcTest(controllers = AuthController.class)
 @Import({SecurityConfig.class, CorsConfig.class, GlobalExceptionHandler.class, JwtFilter.class})
 class AuthControllerTest {
@@ -58,7 +58,7 @@ class AuthControllerTest {
     private AuthService authService;
 
     @Test
-    @DisplayName("POST /api/auth/register 성공")
+    @DisplayName("POST /api/auth/register ?깃났")
     void register_ok() throws Exception {
         RegisterRequest body = new RegisterRequest();
         body.setUsername("newuser");
@@ -72,11 +72,11 @@ class AuthControllerTest {
                                 .contentType(MediaType.APPLICATION_JSON)
                                 .content(objectMapper.writeValueAsString(body)))
                 .andExpect(status().isOk())
-                .andExpect(MockMvcResultMatchers.content().string("회원가입 성공"));
+                .andExpect(MockMvcResultMatchers.content().string("Register success"));
     }
 
     @Test
-    @DisplayName("POST /api/auth/register 실패: 검증 오류(400)")
+    @DisplayName("POST /api/auth/register ?ㅽ뙣: 寃利??ㅻ쪟(400)")
     void register_validation_badRequest() throws Exception {
         RegisterRequest body = new RegisterRequest();
         body.setUsername("");
@@ -92,7 +92,7 @@ class AuthControllerTest {
     }
 
     @Test
-    @DisplayName("POST /api/auth/register 실패: 중복 사용자명(400)")
+    @DisplayName("POST /api/auth/register ?ㅽ뙣: 以묐났 ?ъ슜?먮챸(400)")
     void register_duplicate_conflict() throws Exception {
         RegisterRequest body = new RegisterRequest();
         body.setUsername("dup");
@@ -112,7 +112,7 @@ class AuthControllerTest {
     }
 
     @Test
-    @DisplayName("POST /api/auth/login 성공")
+    @DisplayName("POST /api/auth/login ?깃났")
     void login_ok() throws Exception {
         LoginRequest body = new LoginRequest();
         body.setUsername("user1");
@@ -130,7 +130,7 @@ class AuthControllerTest {
     }
 
     @Test
-    @DisplayName("POST /api/auth/login 실패: 검증 오류(400)")
+    @DisplayName("POST /api/auth/login ?ㅽ뙣: 寃利??ㅻ쪟(400)")
     void login_validation_badRequest() throws Exception {
         LoginRequest body = new LoginRequest();
         body.setUsername("");
@@ -145,7 +145,7 @@ class AuthControllerTest {
     }
 
     @Test
-    @DisplayName("POST /api/auth/login 실패: 인증 실패(401)")
+    @DisplayName("POST /api/auth/login ?ㅽ뙣: ?몄쬆 ?ㅽ뙣(401)")
     void login_badCredentials_unauthorized() throws Exception {
         LoginRequest body = new LoginRequest();
         body.setUsername("user1");
@@ -164,11 +164,11 @@ class AuthControllerTest {
     }
 
     @Test
-    @DisplayName("POST /api/auth/logout 성공")
+    @DisplayName("POST /api/auth/logout ?깃났")
     void logout_ok() throws Exception {
         mockMvc.perform(post("/api/auth/logout")
                         .header("Authorization", "Bearer test-token"))
                 .andExpect(status().isOk())
-                .andExpect(MockMvcResultMatchers.content().string("로그아웃 성공"));
+                .andExpect(MockMvcResultMatchers.content().string("Logout success"));
     }
 }

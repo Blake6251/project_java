@@ -1,10 +1,10 @@
-package com.project.kiosk.service;
+package com.project.portal.service;
 
-import com.project.kiosk.domain.OrderStatus;
-import com.project.kiosk.dto.response.AdminStatsSummaryResponse;
-import com.project.kiosk.dto.response.DailyStatsResponse;
-import com.project.kiosk.dto.response.StatusCountResponse;
-import com.project.kiosk.repository.OrderRepository;
+import com.project.portal.domain.OrderStatus;
+import com.project.portal.dto.response.AdminStatsSummaryResponse;
+import com.project.portal.dto.response.DailyStatsResponse;
+import com.project.portal.dto.response.StatusCountResponse;
+import com.project.portal.repository.OrderRepository;
 import java.time.LocalDate;
 import java.sql.Date;
 import java.util.List;
@@ -20,7 +20,7 @@ public class AdminStatsService {
 
     @Transactional(readOnly = true)
     public List<DailyStatsResponse> getDailyStats() {
-        // JPQL 집계 결과(Object[])를 DTO로 변환한다.
+        // JPQL 吏묎퀎 寃곌낵(Object[])瑜?DTO濡?蹂?섑븳??
         return orderRepository.findDailyStats().stream()
                 .map(row -> DailyStatsResponse.builder()
                         .date(toLocalDate(row[0]))

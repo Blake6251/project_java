@@ -1,1 +1,1 @@
-package com.project.kiosk.domain;
+package com.project.portal.domain;

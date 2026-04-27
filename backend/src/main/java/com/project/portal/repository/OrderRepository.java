@@ -1,7 +1,7 @@
-package com.project.kiosk.repository;
+package com.project.portal.repository;
 
-import com.project.kiosk.domain.Order;
-import com.project.kiosk.domain.OrderStatus;
+import com.project.portal.domain.Order;
+import com.project.portal.domain.OrderStatus;
 import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Optional;

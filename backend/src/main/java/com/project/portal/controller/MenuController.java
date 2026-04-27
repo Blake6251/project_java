@@ -1,6 +1,6 @@
-package com.project.kiosk.controller;
+package com.project.portal.controller;
 
-import com.project.kiosk.service.MenuService;
+import com.project.portal.service.MenuService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
@@ -18,12 +18,12 @@ import org.springframework.web.multipart.MultipartFile;
 @RestController
 @RequestMapping("/api/menus")
 @RequiredArgsConstructor
-@Tag(name = "Menu", description = "메뉴 이미지 API")
+@Tag(name = "Menu", description = "Menu image API")
 public class MenuController {
 
     private final MenuService menuService;
 
-    @Operation(summary = "메뉴 이미지 업로드", description = "관리자가 메뉴 이미지를 업로드합니다.")
+    @Operation(summary = "Upload menu image", description = "Admin uploads a menu image file")
     @PostMapping(value = "/{id}/image", consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
     @PreAuthorize("hasRole('ADMIN')")
     public ResponseEntity<String> uploadImage(@PathVariable Long id, @RequestPart("file") MultipartFile file) {
@@ -31,7 +31,7 @@ public class MenuController {
         return ResponseEntity.ok(path);
     }
 
-    @Operation(summary = "메뉴 이미지 조회", description = "메뉴 이미지 파일을 조회합니다.")
+    @Operation(summary = "Get menu image", description = "Retrieve menu image file bytes")
     @GetMapping(value = "/{id}/image")
     public ResponseEntity<byte[]> getImage(@PathVariable Long id) {
         byte[] image = menuService.getImage(id);

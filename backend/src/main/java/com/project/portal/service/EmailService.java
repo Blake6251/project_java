@@ -1,7 +1,7 @@
-package com.project.kiosk.service;
+package com.project.portal.service;
 
-import com.project.kiosk.domain.Order;
-import com.project.kiosk.domain.Payment;
+import com.project.portal.domain.Order;
+import com.project.portal.domain.Payment;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.mail.SimpleMailMessage;
@@ -20,9 +20,9 @@ public class EmailService {
     public void sendOrderCreatedEmail(Order order) {
         send(
                 order.getUser().getUsername() + "@example.com",
-                "[Kiosk] 주문 생성 알림",
-                "주문자: " + order.getUser().getUsername() + "\n메뉴: " + order.getMenuName()
-                        + "\n수량: " + order.getQuantity() + "\n상태: " + order.getStatus()
+                "[Portal] 二쇰Ц ?앹꽦 ?뚮┝",
+                "二쇰Ц?? " + order.getUser().getUsername() + "\n硫붾돱: " + order.getMenuName()
+                        + "\n?섎웾: " + order.getQuantity() + "\n?곹깭: " + order.getStatus()
         );
     }
 
@@ -30,9 +30,9 @@ public class EmailService {
     public void sendOrderStatusChangedEmail(Order order) {
         send(
                 order.getUser().getUsername() + "@example.com",
-                "[Kiosk] 주문 상태 변경 알림",
-                "주문자: " + order.getUser().getUsername() + "\n메뉴: " + order.getMenuName()
-                        + "\n수량: " + order.getQuantity() + "\n현재 상태: " + order.getStatus()
+                "[Portal] 二쇰Ц ?곹깭 蹂寃??뚮┝",
+                "二쇰Ц?? " + order.getUser().getUsername() + "\n硫붾돱: " + order.getMenuName()
+                        + "\n?섎웾: " + order.getQuantity() + "\n?꾩옱 ?곹깭: " + order.getStatus()
         );
     }
 
@@ -41,9 +41,9 @@ public class EmailService {
         Order order = payment.getOrder();
         send(
                 order.getUser().getUsername() + "@example.com",
-                "[Kiosk] 결제 상태 알림",
-                "주문자: " + order.getUser().getUsername() + "\n메뉴: " + order.getMenuName()
-                        + "\n수량: " + order.getQuantity() + "\n결제 상태: " + payment.getStatus()
+                "[Portal] 寃곗젣 ?곹깭 ?뚮┝",
+                "二쇰Ц?? " + order.getUser().getUsername() + "\n硫붾돱: " + order.getMenuName()
+                        + "\n?섎웾: " + order.getQuantity() + "\n寃곗젣 ?곹깭: " + payment.getStatus()
         );
     }
 
@@ -55,7 +55,7 @@ public class EmailService {
             message.setText(body);
             mailSender.send(message);
         } catch (Exception e) {
-            // 메일 실패는 비즈니스 트랜잭션을 깨지 않도록 로그만 남긴다.
+            // 硫붿씪 ?ㅽ뙣??鍮꾩쫰?덉뒪 ?몃옖??뀡??源⑥? ?딅룄濡?濡쒓렇留??④릿??
             log.warn("Email send failed: {}", e.getMessage());
         }
     }

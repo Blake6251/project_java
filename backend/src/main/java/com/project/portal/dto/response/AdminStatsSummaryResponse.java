@@ -1,4 +1,4 @@
-package com.project.kiosk.dto.response;
+package com.project.portal.dto.response;
 
 import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.List;
@@ -11,6 +11,6 @@ import lombok.Getter;
 @AllArgsConstructor
 public class AdminStatsSummaryResponse {
 
-    @Schema(description = "상태별 주문 집계")
+    @Schema(description = "?곹깭蹂?二쇰Ц 吏묎퀎")
     private List<StatusCountResponse> statusCounts;
 }

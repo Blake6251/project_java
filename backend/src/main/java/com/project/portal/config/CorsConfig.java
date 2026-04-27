@@ -1,4 +1,4 @@
-package com.project.kiosk.config;
+package com.project.portal.config;
 
 import java.util.List;
 import org.springframework.context.annotation.Bean;
@@ -7,7 +7,7 @@ import org.springframework.web.cors.CorsConfiguration;
 import org.springframework.web.cors.CorsConfigurationSource;
 import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
 
-/** React 개발 서버(localhost:5173) 및 프록시 없이 직접 호출 시 CORS 허용 */
+/** React 媛쒕컻 ?쒕쾭(localhost:5173) 諛??꾨줉???놁씠 吏곸젒 ?몄텧 ??CORS ?덉슜 */
 @Configuration
 public class CorsConfig {
 

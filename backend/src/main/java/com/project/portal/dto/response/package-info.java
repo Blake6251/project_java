@@ -1,1 +1,1 @@
-package com.project.kiosk.dto.response;
+package com.project.portal.dto.response;

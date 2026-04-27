@@ -1,4 +1,4 @@
-package com.project.kiosk.dto.request;
+package com.project.portal.dto.request;
 
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.validation.constraints.NotBlank;
@@ -10,10 +10,10 @@ import lombok.Setter;
 public class LoginRequest {
 
     @NotBlank
-    @Schema(description = "로그인 아이디", example = "user1")
+    @Schema(description = "Login username", example = "user1")
     private String username;
 
     @NotBlank
-    @Schema(description = "비밀번호", example = "password1234")
+    @Schema(description = "Password", example = "password1234")
     private String password;
 }

@@ -1,7 +1,7 @@
-package com.project.kiosk.repository;
+package com.project.portal.repository;
 
-import com.project.kiosk.domain.Order;
-import com.project.kiosk.dto.request.OrderSearchCondition;
+import com.project.portal.domain.Order;
+import com.project.portal.dto.request.OrderSearchCondition;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 

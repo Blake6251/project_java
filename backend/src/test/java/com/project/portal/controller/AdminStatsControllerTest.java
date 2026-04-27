@@ -1,21 +1,21 @@
-package com.project.kiosk.controller;
+package com.project.portal.controller;
 
 import static org.mockito.Mockito.when;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
-import com.project.kiosk.config.JwtFilter;
-import com.project.kiosk.config.JwtUtil;
-import com.project.kiosk.config.CorsConfig;
-import com.project.kiosk.config.SecurityConfig;
-import com.project.kiosk.domain.OrderStatus;
-import com.project.kiosk.dto.response.AdminStatsSummaryResponse;
-import com.project.kiosk.dto.response.DailyStatsResponse;
-import com.project.kiosk.dto.response.StatusCountResponse;
-import com.project.kiosk.exception.GlobalExceptionHandler;
-import com.project.kiosk.service.AdminStatsService;
-import com.project.kiosk.service.TokenBlacklistService;
+import com.project.portal.config.JwtFilter;
+import com.project.portal.config.JwtUtil;
+import com.project.portal.config.CorsConfig;
+import com.project.portal.config.SecurityConfig;
+import com.project.portal.domain.OrderStatus;
+import com.project.portal.dto.response.AdminStatsSummaryResponse;
+import com.project.portal.dto.response.DailyStatsResponse;
+import com.project.portal.dto.response.StatusCountResponse;
+import com.project.portal.exception.GlobalExceptionHandler;
+import com.project.portal.service.AdminStatsService;
+import com.project.portal.service.TokenBlacklistService;
 import java.time.LocalDate;
 import java.util.List;
 import org.junit.jupiter.api.DisplayName;
@@ -48,7 +48,7 @@ class AdminStatsControllerTest {
     private AdminStatsService adminStatsService;
 
     @Test
-    @DisplayName("관리자 일자별 통계 조회 성공")
+    @DisplayName("愿由ъ옄 ?쇱옄蹂??듦퀎 議고쉶 ?깃났")
     @WithMockUser(username = "admin1", roles = "ADMIN")
     void daily_admin_ok() throws Exception {
         when(adminStatsService.getDailyStats()).thenReturn(List.of(
@@ -65,7 +65,7 @@ class AdminStatsControllerTest {
     }
 
     @Test
-    @DisplayName("일반 유저 통계 조회 실패 403")
+    @DisplayName("?쇰컲 ?좎? ?듦퀎 議고쉶 ?ㅽ뙣 403")
     @WithMockUser(username = "user1", roles = "USER")
     void daily_user_forbidden() throws Exception {
         mockMvc.perform(get("/api/admin/stats/daily"))
@@ -73,7 +73,7 @@ class AdminStatsControllerTest {
     }
 
     @Test
-    @DisplayName("관리자 요약 통계 조회 성공")
+    @DisplayName("愿由ъ옄 ?붿빟 ?듦퀎 議고쉶 ?깃났")
     @WithMockUser(username = "admin1", roles = "ADMIN")
     void summary_admin_ok() throws Exception {
         when(adminStatsService.getSummary()).thenReturn(

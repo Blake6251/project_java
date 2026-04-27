@@ -1,15 +1,15 @@
-package com.project.kiosk.service;
+package com.project.portal.service;
 
-import com.project.kiosk.domain.Order;
-import com.project.kiosk.domain.OrderStatus;
-import com.project.kiosk.domain.Payment;
-import com.project.kiosk.domain.PaymentStatus;
-import com.project.kiosk.dto.request.PaymentCreateRequest;
-import com.project.kiosk.dto.response.PaymentResponse;
-import com.project.kiosk.exception.CustomException;
-import com.project.kiosk.exception.ErrorCode;
-import com.project.kiosk.repository.OrderRepository;
-import com.project.kiosk.repository.PaymentRepository;
+import com.project.portal.domain.Order;
+import com.project.portal.domain.OrderStatus;
+import com.project.portal.domain.Payment;
+import com.project.portal.domain.PaymentStatus;
+import com.project.portal.dto.request.PaymentCreateRequest;
+import com.project.portal.dto.response.PaymentResponse;
+import com.project.portal.exception.CustomException;
+import com.project.portal.exception.ErrorCode;
+import com.project.portal.repository.OrderRepository;
+import com.project.portal.repository.PaymentRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.cache.annotation.CacheEvict;
 import org.springframework.security.access.AccessDeniedException;
@@ -57,7 +57,7 @@ public class PaymentService {
 
         payment.setStatus(status);
 
-        // 결제 완료 시 주문 상태를 자동으로 준비중으로 전환한다.
+        // 寃곗젣 ?꾨즺 ??二쇰Ц ?곹깭瑜??먮룞?쇰줈 以鍮꾩쨷?쇰줈 ?꾪솚?쒕떎.
         if (status == PaymentStatus.PAID) {
             payment.getOrder().setStatus(OrderStatus.IN_PROGRESS);
         }
@@ -68,7 +68,7 @@ public class PaymentService {
 
     private void validateOwner(Order order, String username, boolean isAdmin) {
         if (!isAdmin && !order.getUser().getUsername().equals(username)) {
-            throw new AccessDeniedException("해당 결제에 접근할 권한이 없습니다.");
+            throw new AccessDeniedException("?대떦 寃곗젣???묎렐??沅뚰븳???놁뒿?덈떎.");
         }
     }
 

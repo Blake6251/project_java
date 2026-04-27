@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<title>Resume</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  @page { size: A4; margin: 0; }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: 'Noto Sans KR', sans-serif; font-size: 9pt; line-height: 1.45; color: #222; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+
+  .page { width: 210mm; min-height: 297mm; margin: 0 auto; padding: 0; position: relative; }
+
+  .profile-area {
+    display: flex; align-items: flex-start; padding: 8mm 20mm 0 20mm; gap: 16px;
+  }
+  .photo-box {
+    width: 82px; height: 104px; border: 1px solid #ccc; border-radius: 4px;
+    overflow: hidden; background: #fafafa; flex-shrink: 0;
+  }
+  .photo-box img {
+    width: 100%; height: 100%; object-fit: cover; object-position: center center;
+    display: block; -webkit-print-color-adjust: exact; print-color-adjust: exact;
+  }
+  .profile-info { flex: 1; }
+  .profile-info .name { font-size: 20pt; font-weight: 700; color: #111; margin-bottom: 2px; }
+  .profile-info .title-desc { font-size: 9.5pt; color: #555; margin-bottom: 6px; }
+  .profile-info .contact-row { font-size: 8.5pt; color: #666; margin-bottom: 2px; }
+  .profile-info a { color: #2c5f8a; text-decoration: none; }
+
+  .intro-text {
+    padding: 4px 20mm 0 20mm;
+    font-size: 9pt; color: #333; line-height: 1.55;
+    border-top: 1px solid #eee; margin-top: 6px; padding-top: 5px;
+    white-space: pre-line;
+  }
+
+  .content { padding: 4px 20mm 6mm 20mm; }
+
+  h2 {
+    font-size: 10pt; font-weight: 700; color: #111;
+    border-left: 3px solid #2c5f8a; padding-left: 7px;
+    margin: 7px 0 4px 0;
+  }
+  .content > h2:first-of-type { margin-top: 6px; }
+
+  table { width: 100%; border-collapse: collapse; font-size: 8.5pt; margin-bottom: 2px; }
+  th, td { padding: 3px 6px; text-align: left; vertical-align: top; }
+  th { background: #f0f4f8; font-weight: 600; color: #333; border-bottom: 1px solid #d0d8e0; white-space: nowrap; }
+  td { border-bottom: 1px solid #eee; color: #333; }
+
+  .skills-wrap { display: grid; grid-template-columns: 1fr 1fr; gap: 8px 14px; font-size: 8.5pt; margin-bottom: 2px; }
+  .skill-block { border: 1px solid #e0e4e8; border-radius: 4px; padding: 6px 8px; background: #fafbfd; }
+  .skill-block .label {
+    font-weight: 700; color: #2c5f8a; font-size: 8pt; margin-bottom: 4px; padding-bottom: 3px; border-bottom: 1px solid #e8ecf0;
+  }
+  .skill-items {
+    display: grid; grid-template-columns: repeat(3, 1fr); gap: 2px 10px; color: #333; line-height: 1.5;
+  }
+  .skill-items.cols-2 { grid-template-columns: repeat(2, 1fr); }
+  .skill-items span::before { content: '· '; color: #888; }
+
+  .proj-list { font-size: 8.5pt; }
+  .proj-item { margin-bottom: 5px; break-inside: avoid; }
+  .proj-item .pname { font-weight: 700; color: #111; }
+  .proj-item .pperiod { font-weight: 400; color: #555; }
+  .proj-item .pdesc { color: #333; line-height: 1.45; margin-top: 2px; padding-left: 0; }
+
+  .edu-sub { font-size: 8.5pt; font-weight: 600; color: #444; margin: 4px 0 2px 0; }
+
+  @media print {
+    .page { width: auto; min-height: auto; }
+    .proj-item { break-inside: avoid; }
+    h2 { break-after: avoid; }
+  }
+  @media screen and (max-width: 720px) {
+    .skills-wrap { grid-template-columns: 1fr; }
+    .skill-items { grid-template-columns: repeat(2, 1fr); }
+  }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <div class="profile-area">
+    <div class="photo-box"><img src="image.jpg" alt="Photo"></div>
+    <div class="profile-info">
+      <div class="name">유현호</div>
+      <div class="title-desc">시스템/백엔드 개발자 · 2년+ (2024.02~)</div>
+      <div class="contact-row">Mobile 010-4641-3732 · Email <a href="mailto:yhh6251@gmail.com" style="color:#666;">yhh6251@gmail.com</a></div>
+      <div class="contact-row">GitHub <a href="https://github.com/Blake6251">https://github.com/Blake6251</a></div>
+    </div>
+  </div>
+
+  <div class="intro-text">고객사 초도 미팅부터 요구사항 정의와 구조 설계를 주도하고,
+내부망·장비 연동 환경에서 개발·납품까지 전 과정을 수행해온 시스템/백엔드 개발자입니다.</div>
+
+  <div class="content">
+
+    <h2>SKILLS</h2>
+    <div class="skills-wrap">
+      <div class="skill-block">
+        <div class="label">Core</div>
+        <div class="skill-items cols-2">
+          <span>Node.js(Express)</span><span>Electron</span>
+          <span>PHP(CI4)</span><span>Java</span>
+          <span>Spring Boot</span><span>MySQL / MariaDB</span>
+        </div>
+      </div>
+      <div class="skill-block">
+        <div class="label">Experience</div>
+        <div class="skill-items cols-2">
+          <span>키오스크 개발</span><span>LMS 유지보수</span>
+          <span>요구사항 분석</span><span>설계·개발·납품</span>
+        </div>
+      </div>
+      <div class="skill-block">
+        <div class="label">Infra</div>
+        <div class="skill-items cols-2">
+          <span>Git / GitHub</span><span>Docker</span><span>AWS</span>
+        </div>
+      </div>
+      <div class="skill-block">
+        <div class="label">Realtime &amp; HW</div>
+        <div class="skill-items">
+          <span>WebSocket</span><span>시리얼 장비 연동</span><span>원격 제어</span>
+        </div>
+      </div>
+    </div>
+
+    <h2>Projects</h2>
+    <div class="proj-list">
+      <div class="proj-item">
+        <div><span class="pname">시뮬레이터 / 원격 제어 — 배달의민족 체험안전센터</span> <span class="pperiod">(2026.01~현재)</span></div>
+        <div class="pdesc">VR 시뮬레이터-제어기 실시간 연동과 다수 PC 원격 제어 시스템을 설계·구현. 현장 통합 테스트 후 납품.</div>
+      </div>
+      <div class="proj-item">
+        <div><span class="pname">MSDS 키오스크 — KT&amp;G 외 5개 고객사</span> <span class="pperiod">(2024.08~현재)</span></div>
+        <div class="pdesc">화학물질 조회·관리 키오스크를 5개 고객사에 납품. 고객사 서버/망 환경에 맞춰 배포 구조를 분리 설계.</div>
+      </div>
+      <div class="proj-item">
+        <div><span class="pname">Safety Cloud Launcher</span> <span class="pperiod">(2025)</span></div>
+        <div class="pdesc">안전교육 콘텐츠 구독·실행용 데스크톱 런처 개발. 다운로드 보호와 실행 검증 중심의 다층 보안 구조 적용.</div>
+      </div>
+      <div class="proj-item">
+        <div><span class="pname">안전교육 퀴즈 키오스크 — 포스코, 수협 외</span> <span class="pperiod">(2025.04~2025.11)</span></div>
+        <div class="pdesc">공통 퀴즈 키오스크를 고객사 요구사항에 맞춰 커스터마이징해 다수 납품. 장비 연동 버전은 SW/HW 동작을 분리 설계.</div>
+      </div>
+      <div class="proj-item">
+        <div><span class="pname">삼성 E&amp;A 안전교육 키오스크</span> <span class="pperiod">(2024.06~2024.07)</span></div>
+        <div class="pdesc">PHP(CI4) 기반 안전교육 키오스크 개발. Fat Controller 이슈를 계기로 도메인 분리 설계 기준 정립.</div>
+      </div>
+      <div class="proj-item">
+        <div><span class="pname">안전교육 e-Learning LMS 유지보수</span> <span class="pperiod">(2024.02~현재)</span></div>
+        <div class="pdesc">PHP(CI4) 기반 LMS 운영·유지보수 담당. 레거시 코드 분석, 기능 개선, 장애 대응 수행.</div>
+      </div>
+      <div class="proj-item">
+        <div><span class="pname">사이드 프로젝트 — Spring Boot 실시간 주문 처리 시스템</span> <span class="pperiod">(2026)</span></div>
+        <div class="pdesc">Java/Spring Boot 기반 실시간 주문 처리 백엔드 구현. 인증·실시간 알림·배포까지 일관된 흐름으로 구성.<br>GitHub: [https://github.com/Blake6251/project_java]</div>
+      </div>
+      <div class="proj-item">
+        <div><span class="pname">DMX/OSC 기반 연출 장비 제어 모듈</span> <span class="pperiod">(2026.04)</span></div>
+        <div class="pdesc">DMX512 기반 연출 장비 제어 데스크톱 앱. 타임라인 편집(블록/재생) + OSC 트리거 연동으로 외부 연출 엔진과 동기화.</div>
+      </div>
+    </div>
+
+    <h2>Experience</h2>
+    <table style="table-layout:fixed;width:100%">
+      <tr><th style="width:150px">Period</th><th style="width:132px">Company</th><th>Role</th></tr>
+      <tr><td>2024.02 ~ 현재</td><td>대한안전교육협회<br>솔루션 개발자</td><td>요구사항 분석·기획 참여, 시스템 설계·개발·납품·현장 기술지원, 고객사 미팅 및 커뮤니케이션</td></tr>
+      <tr><td>2020.12 ~ 2022.02</td><td>남양정공</td><td>생산관리</td></tr>
+    </table>
+
+    <h2>Education</h2>
+    <div class="edu-sub">Academic</div>
+    <table style="table-layout:fixed;width:100%">
+      <tr><th style="width:118px">Period</th><th style="width:156px">Institution</th><th>Program</th><th style="width:52px">Status</th></tr>
+      <tr><td>2023.02 ~ 2023.08</td><td>강남 그린컴퓨터 아카데미</td><td>Java/Python SW개발자 양성과정</td><td>수료</td></tr>
+      <tr><td>2010.03 ~ 2018.02</td><td>부산외국어대학교</td><td>프랑스어학과 (부전공: 국제무역학)</td><td>졸업</td></tr>
+    </table>
+
+    <div class="edu-sub">Language</div>
+    <table style="table-layout:fixed;width:100%">
+      <tr><th style="width:118px">Period</th><th style="width:156px">Institution</th><th>Details</th></tr>
+      <tr><td>2016.01 ~ 2016.10</td><td>EF</td><td>미국 보스턴 영어 어학연수</td></tr>
+      <tr><td>2015.10 ~ 2015.12</td><td>EDA</td><td>필리핀 영어 어학연수</td></tr>
+    </table>
+
+  </div>
+</div>
+</body>
+</html>

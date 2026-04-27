@@ -1,4 +1,4 @@
-package com.project.kiosk.exception;
+package com.project.portal.exception;
 
 import java.util.stream.Collectors;
 import lombok.extern.slf4j.Slf4j;
@@ -71,6 +71,6 @@ public class GlobalExceptionHandler {
     public ResponseEntity<ErrorResponse> handleException(Exception e) {
         log.error("traceId={} unhandledException message={}", traceId(), e.getMessage(), e);
         return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
-                .body(ErrorResponse.of(500, "서버 오류가 발생했습니다"));
+                .body(ErrorResponse.of(500, "?쒕쾭 ?ㅻ쪟媛 諛쒖깮?덉뒿?덈떎"));
     }
 }

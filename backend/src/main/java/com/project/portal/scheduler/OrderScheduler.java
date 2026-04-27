@@ -1,8 +1,8 @@
-package com.project.kiosk.scheduler;
+package com.project.portal.scheduler;
 
-import com.project.kiosk.domain.Order;
-import com.project.kiosk.domain.OrderStatus;
-import com.project.kiosk.repository.OrderRepository;
+import com.project.portal.domain.Order;
+import com.project.portal.domain.OrderStatus;
+import com.project.portal.repository.OrderRepository;
 import java.time.LocalDateTime;
 import java.util.List;
 import lombok.RequiredArgsConstructor;
@@ -18,7 +18,7 @@ public class OrderScheduler {
 
     private final OrderRepository orderRepository;
 
-    // 매일 자정: 24시간 지난 CREATED 주문을 자동 취소한다.
+    // 留ㅼ씪 ?먯젙: 24?쒓컙 吏??CREATED 二쇰Ц???먮룞 痍⑥냼?쒕떎.
     @Scheduled(cron = "0 0 0 * * *")
     @Transactional
     public void cancelOldCreatedOrders() {
@@ -32,7 +32,7 @@ public class OrderScheduler {
         }
     }
 
-    // 매 1시간: IN_PROGRESS 주문 건수를 로그로 출력한다.
+    // 留?1?쒓컙: IN_PROGRESS 二쇰Ц 嫄댁닔瑜?濡쒓렇濡?異쒕젰?쒕떎.
     @Scheduled(cron = "0 0 * * * *")
     @Transactional(readOnly = true)
     public void logInProgressOrdersCount() {

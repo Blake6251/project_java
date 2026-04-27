@@ -1,6 +1,6 @@
-package com.project.kiosk.dto.request;
+package com.project.portal.dto.request;
 
-import com.project.kiosk.domain.OrderStatus;
+import com.project.portal.domain.OrderStatus;
 import java.time.LocalDate;
 import lombok.Getter;
 import lombok.Setter;

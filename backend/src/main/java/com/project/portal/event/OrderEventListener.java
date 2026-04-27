@@ -1,9 +1,9 @@
-package com.project.kiosk.event;
+package com.project.portal.event;
 
-import com.project.kiosk.domain.NotificationType;
-import com.project.kiosk.domain.OrderStatus;
-import com.project.kiosk.service.EmailService;
-import com.project.kiosk.service.NotificationService;
+import com.project.portal.domain.NotificationType;
+import com.project.portal.domain.OrderStatus;
+import com.project.portal.service.EmailService;
+import com.project.portal.service.NotificationService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.event.EventListener;
 import org.springframework.messaging.simp.SimpMessagingTemplate;
@@ -25,7 +25,7 @@ public class OrderEventListener {
         emailService.sendOrderCreatedEmail(event.getOrder());
         notificationService.save(
                 NotificationType.ORDER_CREATED,
-                "주문이 생성되었습니다. orderId=" + event.getOrder().getId(),
+                "二쇰Ц???앹꽦?섏뿀?듬땲?? orderId=" + event.getOrder().getId(),
                 event.getOrder().getId()
         );
     }
@@ -38,7 +38,7 @@ public class OrderEventListener {
                 ? NotificationType.ORDER_CANCELLED : NotificationType.STATUS_CHANGED;
         notificationService.save(
                 type,
-                "주문 상태가 변경되었습니다. status=" + event.getOrder().getStatus(),
+                "二쇰Ц ?곹깭媛 蹂寃쎈릺?덉뒿?덈떎. status=" + event.getOrder().getStatus(),
                 event.getOrder().getId()
         );
     }

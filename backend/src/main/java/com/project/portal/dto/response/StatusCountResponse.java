@@ -1,6 +1,6 @@
-package com.project.kiosk.dto.response;
+package com.project.portal.dto.response;
 
-import com.project.kiosk.domain.OrderStatus;
+import com.project.portal.domain.OrderStatus;
 import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -11,9 +11,9 @@ import lombok.Getter;
 @AllArgsConstructor
 public class StatusCountResponse {
 
-    @Schema(description = "주문 상태", example = "CREATED")
+    @Schema(description = "二쇰Ц ?곹깭", example = "CREATED")
     private OrderStatus status;
 
-    @Schema(description = "상태별 주문 건수", example = "5")
+    @Schema(description = "?곹깭蹂?二쇰Ц 嫄댁닔", example = "5")
     private Long count;
 }

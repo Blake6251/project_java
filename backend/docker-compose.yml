@@ -1,10 +1,10 @@
 services:
   db:
     image: mysql:8
-    container_name: kiosk-mysql
+    container_name: portal-mysql
     restart: unless-stopped
     environment:
-      MYSQL_DATABASE: kiosk_db
+      MYSQL_DATABASE: portal_db
       MYSQL_ROOT_PASSWORD: ${DB_PASSWORD}
     ports:
       - "3307:3306"
@@ -17,14 +17,14 @@ services:
 
   redis:
     image: redis:7-alpine
-    container_name: kiosk-redis
+    container_name: portal-redis
     restart: unless-stopped
     ports:
       - "6379:6379"
 
   app:
-    image: ${DOCKER_USERNAME}/kiosk:latest
-    container_name: kiosk-app
+    image: ${DOCKER_USERNAME}/portal:latest
+    container_name: portal-app
     restart: unless-stopped
     ports:
       - "8080:8080"
@@ -34,7 +34,7 @@ services:
       redis:
         condition: service_started
     environment:
-      SPRING_DATASOURCE_URL: jdbc:mysql://db:3306/kiosk_db?serverTimezone=Asia/Seoul&characterEncoding=UTF-8
+      SPRING_DATASOURCE_URL: jdbc:mysql://db:3306/portal_db?serverTimezone=Asia/Seoul&characterEncoding=UTF-8
       DB_DRIVER: com.mysql.cj.jdbc.Driver
       DB_USERNAME: root
       DB_PASSWORD: ${DB_PASSWORD}

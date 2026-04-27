@@ -1,4 +1,4 @@
-package com.project.kiosk.monitoring;
+package com.project.portal.monitoring;
 
 import java.sql.Connection;
 import java.sql.SQLException;

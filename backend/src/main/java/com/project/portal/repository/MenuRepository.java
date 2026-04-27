@@ -1,6 +1,6 @@
-package com.project.kiosk.repository;
+package com.project.portal.repository;
 
-import com.project.kiosk.domain.Menu;
+import com.project.portal.domain.Menu;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface MenuRepository extends JpaRepository<Menu, Long> {

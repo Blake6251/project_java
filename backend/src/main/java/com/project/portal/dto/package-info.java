@@ -1,1 +1,1 @@
-package com.project.kiosk.dto;
+package com.project.portal.dto;

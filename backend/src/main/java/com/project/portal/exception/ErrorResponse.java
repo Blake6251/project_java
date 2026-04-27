@@ -1,4 +1,4 @@
-package com.project.kiosk.exception;
+package com.project.portal.exception;
 
 import java.time.LocalDateTime;
 import lombok.AllArgsConstructor;

@@ -1,4 +1,4 @@
-package com.project.kiosk.config;
+package com.project.portal.config;
 
 import com.querydsl.jpa.impl.JPAQueryFactory;
 import jakarta.persistence.EntityManager;

@@ -1,29 +1,29 @@
-package com.project.kiosk.config;
+package com.project.portal.config;
 
 import lombok.Getter;
 import lombok.Setter;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.stereotype.Component;
 
-/** Rate Limit 설정 (테스트에서는 application-test.yml 로 비활성화 가능) */
+/** Rate Limit ?ㅼ젙 (?뚯뒪?몄뿉?쒕뒗 application-test.yml 濡?鍮꾪솢?깊솕 媛?? */
 @Getter
 @Setter
 @Component
 @ConfigurationProperties(prefix = "app.ratelimit")
 public class RateLimitProperties {
 
-    /** false 이면 RateLimitFilter 는 통과만 함 */
+    /** false ?대㈃ RateLimitFilter ???듦낵留???*/
     private boolean enabled = true;
 
-    /** IP 당 분당 허용 API 요청 수 */
+    /** IP ??遺꾨떦 ?덉슜 API ?붿껌 ??*/
     private int apiRequestsPerMinute = 60;
 
-    /** 로그인 실패 허용 횟수(동일 IP) */
+    /** 濡쒓렇???ㅽ뙣 ?덉슜 ?잛닔(?숈씪 IP) */
     private int loginMaxFailures = 5;
 
-    /** 초과 시 차단 시간(초) */
+    /** 珥덇낵 ??李⑤떒 ?쒓컙(珥? */
     private int loginBlockSeconds = 600;
 
-    /** 로그인 실패 카운트 윈도우(초) — 이 시간 내 실패만 누적 */
+    /** 濡쒓렇???ㅽ뙣 移댁슫???덈룄??珥? ?????쒓컙 ???ㅽ뙣留??꾩쟻 */
     private int loginFailureWindowSeconds = 900;
 }

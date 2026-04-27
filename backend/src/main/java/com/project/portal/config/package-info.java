@@ -1,1 +1,1 @@
-package com.project.kiosk.config;
+package com.project.portal.config;

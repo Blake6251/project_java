@@ -1,10 +1,10 @@
-package com.project.kiosk.repository;
+package com.project.portal.repository;
 
-import static com.project.kiosk.domain.QOrder.order;
+import static com.project.portal.domain.QOrder.order;
 
-import com.project.kiosk.domain.Order;
-import com.project.kiosk.domain.OrderStatus;
-import com.project.kiosk.dto.request.OrderSearchCondition;
+import com.project.portal.domain.Order;
+import com.project.portal.domain.OrderStatus;
+import com.project.portal.dto.request.OrderSearchCondition;
 import com.querydsl.core.types.dsl.BooleanExpression;
 import com.querydsl.jpa.impl.JPAQueryFactory;
 import java.time.LocalDate;

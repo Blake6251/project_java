@@ -1,4 +1,4 @@
-package com.project.kiosk.config;
+package com.project.portal.config;
 
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.cache.Cache;

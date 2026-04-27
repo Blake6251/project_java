@@ -1,9 +1,9 @@
-package com.project.kiosk.batch;
+package com.project.portal.batch;
 
-import com.project.kiosk.domain.DailyOrderStat;
-import com.project.kiosk.domain.Order;
-import com.project.kiosk.repository.DailyOrderStatRepository;
-import com.project.kiosk.repository.OrderRepository;
+import com.project.portal.domain.DailyOrderStat;
+import com.project.portal.domain.Order;
+import com.project.portal.repository.DailyOrderStatRepository;
+import com.project.portal.repository.OrderRepository;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.List;
@@ -70,7 +70,7 @@ public class DailyStatJobConfig {
         };
     }
 
-    // 매일 새벽 1시 실행
+    // 留ㅼ씪 ?덈꼍 1???ㅽ뻾
     @Scheduled(cron = "0 0 1 * * *")
     public void runDailyStatJob() throws Exception {
         jobLauncher.run(dailyStatJob(), new org.springframework.batch.core.JobParametersBuilder()

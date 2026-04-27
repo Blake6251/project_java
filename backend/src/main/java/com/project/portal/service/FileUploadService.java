@@ -1,7 +1,7 @@
-package com.project.kiosk.service;
+package com.project.portal.service;
 
-import com.project.kiosk.exception.CustomException;
-import com.project.kiosk.exception.ErrorCode;
+import com.project.portal.exception.CustomException;
+import com.project.portal.exception.ErrorCode;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -32,7 +32,7 @@ public class FileUploadService {
             Files.createDirectories(dir);
             Files.copy(file.getInputStream(), target, StandardCopyOption.REPLACE_EXISTING);
         } catch (IOException e) {
-            throw new CustomException(ErrorCode.INVALID_INPUT, "파일 저장에 실패했습니다.");
+            throw new CustomException(ErrorCode.INVALID_INPUT, "?뚯씪 ??μ뿉 ?ㅽ뙣?덉뒿?덈떎.");
         }
         return target.toString();
     }
@@ -41,20 +41,20 @@ public class FileUploadService {
         try {
             return Files.readAllBytes(Paths.get(imagePath));
         } catch (IOException e) {
-            throw new CustomException(ErrorCode.INVALID_INPUT, "이미지 파일을 읽을 수 없습니다.");
+            throw new CustomException(ErrorCode.INVALID_INPUT, "?대?吏 ?뚯씪???쎌쓣 ???놁뒿?덈떎.");
         }
     }
 
     private void validate(MultipartFile file) {
         if (file == null || file.isEmpty()) {
-            throw new CustomException(ErrorCode.INVALID_INPUT, "파일이 비어 있습니다.");
+            throw new CustomException(ErrorCode.INVALID_INPUT, "?뚯씪??鍮꾩뼱 ?덉뒿?덈떎.");
         }
         if (file.getSize() > MAX_SIZE) {
-            throw new CustomException(ErrorCode.INVALID_INPUT, "파일 크기는 5MB 이하여야 합니다.");
+            throw new CustomException(ErrorCode.INVALID_INPUT, "?뚯씪 ?ш린??5MB ?댄븯?ъ빞 ?⑸땲??");
         }
         String ext = getExtension(file.getOriginalFilename());
         if (!ALLOWED_EXT.contains(ext)) {
-            throw new CustomException(ErrorCode.INVALID_INPUT, "jpg, jpeg, png 파일만 업로드 가능합니다.");
+            throw new CustomException(ErrorCode.INVALID_INPUT, "jpg, jpeg, png ?뚯씪留??낅줈??媛?ν빀?덈떎.");
         }
     }
 

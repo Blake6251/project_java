@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<title>경력기술서</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  @page { size: A4; margin: 0; }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: 'Noto Sans KR', sans-serif; font-size: 9pt; line-height: 1.55; color: #222; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  .page { width: 210mm; margin: 0 auto; padding: 22mm 22mm 18mm 22mm; }
+
+  .header { text-align: center; margin-bottom: 6px; }
+  .header h1 { font-size: 18pt; font-weight: 700; color: #111; margin-bottom: 2px; letter-spacing: 3px; }
+  .header .meta { font-size: 9.5pt; color: #555; }
+  .header .meta strong { color: #222; }
+  .divider { border: none; border-top: 2px solid #2c5f8a; margin: 8px 0; }
+
+  h2 {
+    font-size: 10.5pt; font-weight: 700; color: #111;
+    border-left: 3px solid #2c5f8a; padding-left: 8px;
+    margin: 14px 0 6px 0;
+  }
+
+  table { width: 100%; border-collapse: collapse; font-size: 8.5pt; margin-bottom: 3px; }
+  th, td { padding: 3px 7px; text-align: left; vertical-align: top; }
+  th { background: #f0f4f8; font-weight: 600; color: #333; border-bottom: 1px solid #d0d8e0; white-space: nowrap; }
+  td { border-bottom: 1px solid #eee; color: #333; }
+  .tech-table th { width: 100px; }
+
+  .growth-box {
+    background: #f8f9fb; border: 1px solid #e0e4e8; border-radius: 4px;
+    padding: 8px 12px; font-size: 8.5pt; line-height: 1.65; color: #333; white-space: pre-line;
+  }
+
+  .proj { margin-bottom: 12px; padding-top: 3px; break-inside: avoid; }
+  .proj-title { font-size: 9.5pt; font-weight: 700; color: #111; margin-bottom: 4px; }
+  .proj-title .period { font-weight: 400; font-size: 8pt; color: #888; }
+  .proj-line { font-size: 8.5pt; color: #333; margin: 0 0 2px 0; line-height: 1.5; }
+
+  .decision-table th { font-size: 8pt; }
+  .decision-table td { font-size: 8pt; line-height: 1.4; }
+
+  .competency ul { padding-left: 15px; }
+  .competency li { font-size: 8.5pt; color: #333; margin-bottom: 2px; }
+  .competency li strong { color: #111; }
+
+  @media print {
+    .page { width: auto; padding: 20mm 18mm 20mm 18mm; }
+    .proj { break-inside: avoid; padding-top: 4px; }
+    h2 { break-after: avoid; }
+  }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <div class="header">
+    <h1>경력기술서</h1>
+    <div class="meta"><strong>유현호</strong> · 2년+ (2024.02 ~ 현재) · 대한안전교육협회 · 솔루션 개발자</div>
+  </div>
+  <hr class="divider">
+
+  <h2>기술 요약</h2>
+  <table class="tech-table">
+    <tr><th>Core</th><td>Electron, Node.js(Express), Java, JavaScript, PHP(CI4), Spring Boot, JPA, MySQL/MariaDB</td></tr>
+    <tr><th>System</th><td>MVC, REST API</td></tr>
+    <tr><th>Realtime &amp; HW</th><td>실시간 통신, 단말·시리얼 장비 연동</td></tr>
+    <tr><th>Deploy</th><td>Git, Docker, AWS</td></tr>
+  </table>
+
+  <h2>백엔드 관점 요약</h2>
+  <div class="competency">
+    <ul>
+      <li><strong>망·서버·장비 조건</strong>을 먼저 분석해 배포 형태를 결정.</li>
+      <li><strong>실시간 흐름</strong>과 <strong>요청·응답 API</strong>를 분리해 장애 지점과 책임 범위를 격리.</li>
+      <li>인증·다운로드·기기 검증을 <strong>단계별로 나누어</strong> 단일 지점 우회를 차단.</li>
+      <li>운영 중 확인된 문제를 <strong>다음 프로젝트 초기 구조</strong>에 반영해 반복 제거.</li>
+      <li>요구사항이 불명확하면 <strong>기능·구조·운영 범위를 직접 정의</strong>하고 납품까지 책임.</li>
+    </ul>
+  </div>
+
+  <h2>성장 요약</h2>
+  <div class="growth-box">[2024 입사] 삼성 E&amp;A — 단일 모듈에 기능이 몰림(Fat Controller) 체감
+    ↓ 구조를 나눌 필요
+[2024~] KT&amp;G — 업무 단위로 나눈 서버 구조 정착
+    ↓ 같은 뼈대가 반복
+[2025] 사내 보일러플레이트 — 초기 세팅 표준화, 다수 프로젝트 파생
+    ↓ 소프트웨어만으로는 부족한 현장
+[2025~] 장비 연동, 실시간 통신, 원격 제어까지 확장</div>
+
+  <h2>프로젝트</h2>
+
+  <div class="proj">
+    <div class="proj-title">1. MSDS 키오스크 — KT&amp;G 외 5개 고객사 <span class="period">(2024.08~현재)</span></div>
+    <p class="proj-line">→ 공장 현장용 <strong>화학물질 조회·관리 키오스크</strong>를 <strong>5개 고객사</strong>에 납품.</p>
+    <p class="proj-line">→ 제약: 고객사마다 <strong>서버 유무·망·보안 정책</strong>이 달라 단일 배포로 대응 불가.</p>
+    <p class="proj-line">→ 해결: 동일 코드 베이스에서 <strong>분리형 / 단일 풀스택 / 컨테이너</strong> 3가지 배포 구조로 분기 설계.</p>
+    <p class="proj-line">→ 판단: 단일 배포 전략 대신 분리형 구조를 선택. <strong>배포 복잡도는 상승</strong>했지만 <strong>고객사별 환경 대응 유연성</strong>을 확보하는 트레이드오프를 수용.</p>
+    <p class="proj-line">→ 성능: 주요 조회 컬럼 <strong>인덱스 재설계</strong> 및 <strong>N+1 쿼리 제거</strong>로 현장 검색 응답 시간 안정화.</p>
+    <p class="proj-line">→ 결과: 제품 하나로 <strong>5개 현장 제약 흡수</strong>, 신규 고객사 대응 기간 단축.</p>
+  </div>
+
+  <div class="proj">
+    <div class="proj-title">2. 안전교육 퀴즈 키오스크 — 포스코 E&amp;C, 수협중앙회 외 <span class="period">(2025.04~2025.11)</span></div>
+    <p class="proj-line">→ 안전교육 이수 평가용 <strong>퀴즈 키오스크 공통 솔루션</strong>을 고객사별로 커스터마이징 납품.</p>
+    <p class="proj-line">→ 제약: <strong>체험 장비 연동 버전</strong>에서 UI 반응과 기계 타이밍이 뒤엉켜 동작 불안정.</p>
+    <p class="proj-line">→ 해결: <strong>UI·업무 규칙</strong>과 <strong>장비 제어</strong>를 계층 분리, 상태 변화는 이벤트 단방향 전달.</p>
+    <p class="proj-line">→ 결과: 장비 연동 버전 <strong>동작 신뢰도 안정화</strong>, 내부망에서 <strong>결과 통지·상태 전송</strong> 운영 흐름 확보.</p>
+    <p class="proj-line">→ 운영: 평균 <strong>10~20대 단말 동시 운영</strong> 환경에서 안정 동작 검증, 현장 장애 빈도 감소.</p>
+  </div>
+
+  <div class="proj">
+    <div class="proj-title">3. 시뮬레이터 / 원격 제어 — 배달의민족 체험안전센터 <span class="period">(2026.01~현재)</span></div>
+    <p class="proj-line">→ VR 시뮬레이터-제어기 <strong>실시간 연동</strong>, 센터 내 다수 PC <strong>원격 전원·프로그램 제어</strong> 시스템 구축.</p>
+    <p class="proj-line">→ 제약: <strong>상태 전송</strong>과 <strong>조회·저장 요청</strong>이 한 경로에 섞이면 지연·유실 위험.</p>
+    <p class="proj-line">→ 초기 시도: 단일 이벤트 흐름으로 설계해 <strong>상태 꼬임·메시지 순서 문제</strong> 발생 → 채널 분리 구조로 재설계.</p>
+    <p class="proj-line">→ 해결: 상태 채널(<strong>WebSocket</strong>)과 요청 채널(<strong>HTTP API</strong>)을 분리, <strong>heartbeat·재연결 로직</strong>으로 실시간 통신 안정성 확보.</p>
+    <p class="proj-line">→ 결과: 현장 <strong>전 구간 통합 테스트 통과 후 납품</strong>, 운영 중 상태 꼬임 이슈 없음. 장애 발생 시 <strong>평균 복구 10분 이내</strong> 대응.</p>
+  </div>
+
+  <div class="proj">
+    <div class="proj-title">4. Safety Cloud Launcher <span class="period">(2025)</span></div>
+    <p class="proj-line">→ 안전교육 <strong>콘텐츠 구독·실행 데스크톱 런처</strong> 신규 개발.</p>
+    <p class="proj-line">→ 제약: 콘텐츠 유출·기기 도용·오프라인 악용 리스크가 존재하는 <strong>현장 단말 환경</strong>.</p>
+    <p class="proj-line">→ 해결: <strong>파일 보관 / 실행 검증 / 기기 식별 / 오프라인 한도</strong>를 단계 분리한 <strong>다층 검증 구조</strong> 설계. 실행 시 <strong>HMAC 기반 무결성 검증</strong>과 <strong>디바이스 fingerprint 기반 기기 식별</strong> 적용.</p>
+    <p class="proj-line">→ 결과: 단일 지점 우회로 <strong>전체 보안이 무너지지 않는 구조</strong> 확보, 다국어·원격 지원·OS별 배포까지 운영.</p>
+  </div>
+
+  <div class="proj">
+    <div class="proj-title">5. 삼성 E&amp;A 안전교육 키오스크 <span class="period">(2024.06~2024.07)</span></div>
+    <p class="proj-line">→ PHP(CI4) 기반 키오스크 개발. 기능이 단일 컨트롤러에 몰리는 <strong>Fat Controller</strong> 구조 체감.</p>
+    <p class="proj-line">→ 이후 프로젝트부터 <strong>도메인·모듈 분리</strong> 패턴을 기본 설계 기준으로 정립.</p>
+  </div>
+
+  <div class="proj">
+    <div class="proj-title">6. 안전교육 e-Learning LMS — 유지보수 <span class="period">(2024.02~현재)</span></div>
+    <p class="proj-line">→ PHP(CI4) 기반 LMS <strong>운영·유지보수</strong>. 레거시 구조 분석 후 기능 개선·장애 대응 수행.</p>
+    <p class="proj-line">→ 운영에서 드러난 <strong>설계 부채</strong>를 신규 프로젝트 초기 설계에 반영해 동일 문제 재발 차단.</p>
+  </div>
+
+  <div class="proj">
+    <div class="proj-title">7. 키오스크 보일러플레이트 <span class="period">(2025, 사내)</span></div>
+    <p class="proj-line">→ 프로젝트마다 반복되던 <strong>초기 세팅·공통 모듈</strong>을 사내 <strong>공통 템플릿</strong>으로 표준화.</p>
+    <p class="proj-line">→ 확장성: 신규 기능 추가 시 <strong>기존 구조 변경 없이 모듈 단위 확장</strong>이 가능하도록 경계 설계, 이후 프로젝트에서 동일 패턴 재사용.</p>
+    <p class="proj-line">→ 결과: <strong>5개 이상 프로젝트</strong> 파생, 초기 세팅 시간 단축 및 공통 수정 사항 일괄 반영 가능.</p>
+  </div>
+
+  <div class="proj">
+    <div class="proj-title">8. 사이드 프로젝트 — Spring Boot 실시간 주문 처리 시스템 <span class="period">(2026)</span></div>
+    <p class="proj-line">→ 키오스크 주문의 <strong>관리자 실시간 전달</strong> 흐름을 <strong>Java/Spring Boot</strong>로 구현한 개인 프로젝트.</p>
+    <p class="proj-line">→ 인증·실시간 알림·저장·컨테이너·클라우드 배포를 <strong>운영 가능한 하나의 형태</strong>로 묶어 구성.</p>
+    <p class="proj-line">→ <strong>STOMP 기반 실시간 주문 알림</strong> 처리 구조 구현으로 관리자-주문 흐름 단방향 스트리밍 확보.</p>
+    <p class="proj-line">→ GitHub: <a href="https://github.com/Blake6251/project_java" style="color:#2c5f8a; text-decoration:none;">https://github.com/Blake6251/project_java</a></p>
+  </div>
+
+  <div class="proj">
+    <div class="proj-title">9. DMX/OSC 기반 연출 장비 제어 모듈 <span class="period">(2026.04)</span></div>
+    <p class="proj-line">→ <strong>DMX512</strong> 기반 연출 장비 제어 데스크톱 앱 설계·구현.</p>
+    <p class="proj-line">→ <strong>타임라인 편집·재생 구조</strong>로 연출 시퀀스를 구성, <strong>OSC 트리거</strong>로 외부 연출 엔진과 동기화.</p>
+  </div>
+
+  <h2>엔지니어링 의사결정</h2>
+  <table class="decision-table">
+    <tr><th style="width:28%">상황</th><th style="width:36%">판단</th><th style="width:36%">결과</th></tr>
+    <tr><td>무인·장시간 가동 키오스크 메모리 누수</td><td>뷰어 누적이 원인 → <strong>세션 단위 주기적 해제</strong>로 재시작 의존 제거</td><td><strong>72시간 연속 가동</strong> 통과, 이후 프로젝트 기본 구조에 반영</td></tr>
+    <tr><td>실물 장비 확보 전 연동 개발</td><td>납기 리스크 방지를 위해 <strong>시뮬레이션·루프백</strong>으로 통신 구간 선행 검증</td><td>현장 투입 즉시 <strong>장비 연동 로직 안정화</strong>, 실기기 일정 의존도 제거</td></tr>
+    <tr><td>고객사마다 서버 구성 상이</td><td>단일 배포 불가 → <strong>분리형 vs 단일 풀스택</strong>을 동일 코드에서 선택 가능한 구조</td><td><strong>5개 고객사 환경 대응</strong>, 신규 고객사 대응 시간 단축</td></tr>
+    <tr><td>프로젝트마다 반복되는 초기 세팅</td><td>개별 개선보다 <strong>사내 공통 템플릿화</strong>가 장기 유지비용 낮다고 판단</td><td><strong>5개 이상 프로젝트</strong> 파생, 수정 사항 일괄 공유</td></tr>
+    <tr><td>기획이 불명확한 신규 과제</td><td>확정을 기다리지 않고 <strong>요구사항·기능 범위를 직접 정의</strong>해 구조 제안</td><td>개발 지연 없이 <strong>납품 일정 유지</strong>, 합의된 기준으로 운영 진입</td></tr>
+  </table>
+
+  <h2>공통 역량</h2>
+  <div class="competency">
+    <ul>
+      <li><strong>요구사항 정의 → 구조 설계 → 개발 → 납품</strong>을 한 흐름으로 수행. 기획 부재 상황에서도 직접 정의.</li>
+      <li>고객사·기획·디자인과 <strong>직접 커뮤니케이션</strong>하며 현장 제약을 구조 분기로 전환해 제안.</li>
+      <li><strong>내부망·보안 정책</strong> 환경에서 배포·운영 협업 경험 다수.</li>
+      <li><strong>계약 전 기술 검토 → 납품 → 현장 교육</strong>까지 단일 흐름으로 수행.</li>
+      <li>KT&amp;G, 삼성 E&amp;A, 포스코 E&amp;C, 수협중앙회 등 <strong>대기업·공공 현장</strong> 다수 납품.</li>
+      <li>PHP·Node 양쪽 실무 경험으로 <strong>요건에 맞는 스택 선택·유지보수</strong> 가능.</li>
+    </ul>
+  </div>
+
+
+</div>
+</body>
+</html>

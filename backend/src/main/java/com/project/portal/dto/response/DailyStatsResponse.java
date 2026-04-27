@@ -1,4 +1,4 @@
-package com.project.kiosk.dto.response;
+package com.project.portal.dto.response;
 
 import io.swagger.v3.oas.annotations.media.Schema;
 import java.time.LocalDate;
@@ -11,12 +11,12 @@ import lombok.Getter;
 @AllArgsConstructor
 public class DailyStatsResponse {
 
-    @Schema(description = "집계 날짜", example = "2026-03-31")
+    @Schema(description = "吏묎퀎 ?좎쭨", example = "2026-03-31")
     private LocalDate date;
 
-    @Schema(description = "주문 건수", example = "12")
+    @Schema(description = "二쇰Ц 嫄댁닔", example = "12")
     private Long orderCount;
 
-    @Schema(description = "총 주문 수량", example = "28")
+    @Schema(description = "珥?二쇰Ц ?섎웾", example = "28")
     private Long totalQuantity;
 }

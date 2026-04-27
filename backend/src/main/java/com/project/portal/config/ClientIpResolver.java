@@ -1,9 +1,9 @@
-package com.project.kiosk.config;
+package com.project.portal.config;
 
 import jakarta.servlet.http.HttpServletRequest;
 import org.springframework.util.StringUtils;
 
-/** X-Forwarded-For 등을 고려한 클라이언트 IP 추출 */
+/** X-Forwarded-For ?깆쓣 怨좊젮???대씪?댁뼵??IP 異붿텧 */
 public final class ClientIpResolver {
 
     private ClientIpResolver() {

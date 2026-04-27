@@ -1,4 +1,4 @@
-package com.project.kiosk.dto.request;
+package com.project.portal.dto.request;
 
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.validation.constraints.NotNull;
@@ -11,11 +11,11 @@ import lombok.Setter;
 public class PaymentCreateRequest {
 
     @NotNull
-    @Schema(description = "결제 대상 주문 ID", example = "1")
+    @Schema(description = "寃곗젣 ???二쇰Ц ID", example = "1")
     private Long orderId;
 
     @NotNull
     @Positive
-    @Schema(description = "결제 금액", example = "4500")
+    @Schema(description = "寃곗젣 湲덉븸", example = "4500")
     private Integer amount;
 }

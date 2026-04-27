@@ -1,4 +1,4 @@
-package com.project.kiosk.dto.response;
+package com.project.portal.dto.response;
 
 import java.util.List;
 import lombok.AllArgsConstructor;

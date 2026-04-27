@@ -1,7 +1,7 @@
-package com.project.kiosk.config;
+package com.project.portal.config;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.project.kiosk.service.LoginRateLimitService;
+import com.project.portal.service.LoginRateLimitService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.boot.web.servlet.FilterRegistrationBean;
 import org.springframework.context.annotation.Bean;
@@ -10,8 +10,8 @@ import org.springframework.core.Ordered;
 import org.springframework.data.redis.core.StringRedisTemplate;
 
 /**
- * RateLimitFilter 를 서블릿 필터로 등록.
- * TraceLoggingFilter(HIGHEST_PRECEDENCE) 직후에 실행되도록 순서 지정.
+ * RateLimitFilter 瑜??쒕툝由??꾪꽣濡??깅줉.
+ * TraceLoggingFilter(HIGHEST_PRECEDENCE) 吏곹썑???ㅽ뻾?섎룄濡??쒖꽌 吏??
  */
 @Configuration
 @RequiredArgsConstructor

@@ -1,4 +1,4 @@
-package com.project.kiosk.config;
+package com.project.portal.config;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;

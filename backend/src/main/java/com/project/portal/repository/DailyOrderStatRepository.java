@@ -1,6 +1,6 @@
-package com.project.kiosk.repository;
+package com.project.portal.repository;
 
-import com.project.kiosk.domain.DailyOrderStat;
+import com.project.portal.domain.DailyOrderStat;
 import java.time.LocalDate;
 import java.util.Optional;
 import org.springframework.data.jpa.repository.JpaRepository;

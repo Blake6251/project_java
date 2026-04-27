@@ -1,9 +1,9 @@
-package com.project.kiosk.service;
+package com.project.portal.service;
 
-import com.project.kiosk.domain.Menu;
-import com.project.kiosk.exception.CustomException;
-import com.project.kiosk.exception.ErrorCode;
-import com.project.kiosk.repository.MenuRepository;
+import com.project.portal.domain.Menu;
+import com.project.portal.exception.CustomException;
+import com.project.portal.exception.ErrorCode;
+import com.project.portal.repository.MenuRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -30,7 +30,7 @@ public class MenuService {
         Menu menu = menuRepository.findById(menuId)
                 .orElseThrow(() -> new CustomException(ErrorCode.MENU_NOT_FOUND));
         if (menu.getImageUrl() == null || menu.getImageUrl().isBlank()) {
-            throw new CustomException(ErrorCode.INVALID_INPUT, "등록된 이미지가 없습니다.");
+            throw new CustomException(ErrorCode.INVALID_INPUT, "?깅줉???대?吏媛 ?놁뒿?덈떎.");
         }
         return fileUploadService.load(menu.getImageUrl());
     }

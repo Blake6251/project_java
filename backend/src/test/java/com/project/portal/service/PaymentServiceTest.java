@@ -1,20 +1,20 @@
-package com.project.kiosk.service;
+package com.project.portal.service;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 import static org.mockito.Mockito.when;
 
-import com.project.kiosk.domain.Order;
-import com.project.kiosk.domain.OrderStatus;
-import com.project.kiosk.domain.Payment;
-import com.project.kiosk.domain.PaymentStatus;
-import com.project.kiosk.domain.User;
-import com.project.kiosk.dto.request.PaymentCreateRequest;
-import com.project.kiosk.dto.response.PaymentResponse;
-import com.project.kiosk.exception.CustomException;
-import com.project.kiosk.exception.ErrorCode;
-import com.project.kiosk.repository.OrderRepository;
-import com.project.kiosk.repository.PaymentRepository;
+import com.project.portal.domain.Order;
+import com.project.portal.domain.OrderStatus;
+import com.project.portal.domain.Payment;
+import com.project.portal.domain.PaymentStatus;
+import com.project.portal.domain.User;
+import com.project.portal.dto.request.PaymentCreateRequest;
+import com.project.portal.dto.response.PaymentResponse;
+import com.project.portal.exception.CustomException;
+import com.project.portal.exception.ErrorCode;
+import com.project.portal.repository.OrderRepository;
+import com.project.portal.repository.PaymentRepository;
 import java.time.LocalDateTime;
 import java.util.Optional;
 import org.junit.jupiter.api.DisplayName;
@@ -41,10 +41,10 @@ class PaymentServiceTest {
     private PaymentService paymentService;
 
     @Test
-    @DisplayName("결제 생성 성공")
+    @DisplayName("寃곗젣 ?앹꽦 ?깃났")
     void create_success() {
         User user = User.builder().id(1L).username("user1").password("x").role("USER").createdAt(LocalDateTime.now()).build();
-        Order order = Order.builder().id(10L).menuName("라떼").quantity(1).status(OrderStatus.CREATED).user(user).createdAt(LocalDateTime.now()).build();
+        Order order = Order.builder().id(10L).menuName("?쇰뼹").quantity(1).status(OrderStatus.CREATED).user(user).createdAt(LocalDateTime.now()).build();
         PaymentCreateRequest request = new PaymentCreateRequest();
         request.setOrderId(10L);
         request.setAmount(4500);
@@ -60,10 +60,10 @@ class PaymentServiceTest {
     }
 
     @Test
-    @DisplayName("결제 생성 실패: 타인 주문")
+    @DisplayName("寃곗젣 ?앹꽦 ?ㅽ뙣: ???二쇰Ц")
     void create_forbidden() {
         User owner = User.builder().id(1L).username("owner").password("x").role("USER").createdAt(LocalDateTime.now()).build();
-        Order order = Order.builder().id(10L).menuName("라떼").quantity(1).status(OrderStatus.CREATED).user(owner).createdAt(LocalDateTime.now()).build();
+        Order order = Order.builder().id(10L).menuName("?쇰뼹").quantity(1).status(OrderStatus.CREATED).user(owner).createdAt(LocalDateTime.now()).build();
         PaymentCreateRequest request = new PaymentCreateRequest();
         request.setOrderId(10L);
         request.setAmount(4500);
@@ -75,10 +75,10 @@ class PaymentServiceTest {
     }
 
     @Test
-    @DisplayName("결제 상태 PAID 변경 시 주문 상태 IN_PROGRESS 전환")
+    @DisplayName("寃곗젣 ?곹깭 PAID 蹂寃???二쇰Ц ?곹깭 IN_PROGRESS ?꾪솚")
     void updateStatus_paid_updatesOrder() {
         User user = User.builder().id(1L).username("user1").password("x").role("USER").createdAt(LocalDateTime.now()).build();
-        Order order = Order.builder().id(10L).menuName("라떼").quantity(1).status(OrderStatus.CREATED).user(user).createdAt(LocalDateTime.now()).build();
+        Order order = Order.builder().id(10L).menuName("?쇰뼹").quantity(1).status(OrderStatus.CREATED).user(user).createdAt(LocalDateTime.now()).build();
         Payment payment = Payment.builder().id(100L).order(order).amount(4500).status(PaymentStatus.CREATED).createdAt(LocalDateTime.now()).build();
 
         when(paymentRepository.findByIdWithOrderAndUser(100L)).thenReturn(Optional.of(payment));
@@ -90,7 +90,7 @@ class PaymentServiceTest {
     }
 
     @Test
-    @DisplayName("결제 조회 실패: 결제 없음")
+    @DisplayName("寃곗젣 議고쉶 ?ㅽ뙣: 寃곗젣 ?놁쓬")
     void findById_notFound() {
         when(paymentRepository.findByIdWithOrderAndUser(999L)).thenReturn(Optional.empty());
         assertThatThrownBy(() -> paymentService.findById(999L, "user1", false))

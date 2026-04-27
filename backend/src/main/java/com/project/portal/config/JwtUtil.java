@@ -1,4 +1,4 @@
-package com.project.kiosk.config;
+package com.project.portal.config;
 
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;

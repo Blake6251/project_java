@@ -1,14 +1,14 @@
-# 로컬 면접 준비·정리용 — 원격 저장소에 올리지 않음
+# Local interview notes (do not commit)
 interview/
 
-# 프론트 의존성 (용량·불필요)
+# Frontend dependencies
 node_modules/
 
-# 환경 변수·비밀 (예시 파일만 커밋)
+# Environment files (except samples)
 .env
 .env.*
 !.env.example
 
-# 로컬 로그
-kiosk/logs/
+# Local logs
+backend/logs/
 *.log

@@ -1,4 +1,4 @@
-package com.project.kiosk.service;
+package com.project.portal.service;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
@@ -7,14 +7,14 @@ import static org.mockito.ArgumentMatchers.eq;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
-import com.project.kiosk.config.JwtUtil;
-import com.project.kiosk.domain.User;
-import com.project.kiosk.dto.request.LoginRequest;
-import com.project.kiosk.dto.request.RegisterRequest;
-import com.project.kiosk.dto.response.LoginResponse;
-import com.project.kiosk.exception.CustomException;
-import com.project.kiosk.exception.ErrorCode;
-import com.project.kiosk.repository.UserRepository;
+import com.project.portal.config.JwtUtil;
+import com.project.portal.domain.User;
+import com.project.portal.dto.request.LoginRequest;
+import com.project.portal.dto.request.RegisterRequest;
+import com.project.portal.dto.response.LoginResponse;
+import com.project.portal.exception.CustomException;
+import com.project.portal.exception.ErrorCode;
+import com.project.portal.repository.UserRepository;
 import jakarta.servlet.http.HttpServletRequest;
 import java.util.List;
 import org.junit.jupiter.api.DisplayName;
@@ -29,7 +29,7 @@ import org.springframework.security.authentication.UsernamePasswordAuthenticatio
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
-/** AuthService 단위 테스트 (Mockito). 회원가입·로그인 성공/실패 시나리오. */
+/** AuthService ?⑥쐞 ?뚯뒪??(Mockito). ?뚯썝媛?끒룸줈洹몄씤 ?깃났/?ㅽ뙣 ?쒕굹由ъ삤. */
 @ExtendWith(MockitoExtension.class)
 class AuthServiceTest {
 
@@ -58,7 +58,7 @@ class AuthServiceTest {
     private AuthService authService;
 
     @Test
-    @DisplayName("회원가입 성공: 신규 사용자 저장")
+    @DisplayName("Register success: new user")
     void register_success() {
         RegisterRequest request = new RegisterRequest();
         request.setUsername("newuser");
@@ -74,7 +74,7 @@ class AuthServiceTest {
     }
 
     @Test
-    @DisplayName("회원가입 실패: 중복 사용자명")
+    @DisplayName("?뚯썝媛???ㅽ뙣: 以묐났 ?ъ슜?먮챸")
     void register_duplicateUsername_throws() {
         RegisterRequest request = new RegisterRequest();
         request.setUsername("dup");
@@ -90,7 +90,7 @@ class AuthServiceTest {
     }
 
     @Test
-    @DisplayName("로그인 성공: JWT 토큰 반환")
+    @DisplayName("濡쒓렇???깃났: JWT ?좏겙 諛섑솚")
     void login_success() {
         LoginRequest request = new LoginRequest();
         request.setUsername("user1");
@@ -121,7 +121,7 @@ class AuthServiceTest {
     }
 
     @Test
-    @DisplayName("로그인 실패: 잘못된 자격증명")
+    @DisplayName("濡쒓렇???ㅽ뙣: ?섎せ???먭꺽利앸챸")
     void login_badCredentials_throws() {
         LoginRequest request = new LoginRequest();
         request.setUsername("user1");
@@ -141,7 +141,7 @@ class AuthServiceTest {
     }
 
     @Test
-    @DisplayName("로그아웃 성공: 블랙리스트 저장")
+    @DisplayName("Logout success: blacklist token")
     void logout_success() {
         String header = "Bearer test-token";
         when(jwtUtil.isTokenValid("test-token")).thenReturn(true);
@@ -153,7 +153,7 @@ class AuthServiceTest {
     }
 
     @Test
-    @DisplayName("로그아웃 실패: Authorization 헤더 형식 오류")
+    @DisplayName("濡쒓렇?꾩썐 ?ㅽ뙣: Authorization ?ㅻ뜑 ?뺤떇 ?ㅻ쪟")
     void logout_invalidHeader_throws() {
         assertThatThrownBy(() -> authService.logout("invalid"))
                 .isInstanceOf(CustomException.class)
