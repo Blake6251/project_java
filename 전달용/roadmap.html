@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>개발현황 — COSTOOL</title>
+  <link rel="stylesheet" href="./assets/styles.css" />
+</head>
+<body>
+  <div class="dev-banner">
+    <strong>COSTOOL SaaS 0.3.0-beta · 개발 진행 중</strong>
+    <span>개발 로드맵</span>
+  </div>
+  <nav class="nav">
+    <a class="brand" href="./index.html"><img src="./assets/logo.png" alt="COSTOOL" /></a>
+    <div class="nav-links">
+      <a href="./index.html">홈</a>
+      <a href="./products.html">상품</a>
+      <a href="./reservations.html">예약</a>
+      <a class="active" href="./roadmap.html">개발현황</a>
+    </div>
+    <div class="nav-spacer"></div>
+    <a class="btn btn-primary" href="./login.html">로그인</a>
+  </nav>
+
+  <main class="page">
+    <section class="section" style="margin-top:1rem">
+      <h2>개발 현황</h2>
+      <p class="lead">COSTOOL 기업용 판매·예약 SaaS 프로토타입 진행 현황입니다.</p>
+
+      <div class="panel progress-list" id="roadmap"></div>
+
+      <div class="grid-2" style="margin-top:1rem">
+        <article class="panel">
+          <h3>현재 동작</h3>
+          <p>브랜드 랜딩, 상품·예약 UI 시연, 로그인 화면 껍데기, 개발현황 표시.</p>
+        </article>
+        <article class="panel">
+          <h3>다음 스프린트</h3>
+          <p>상품 도메인 정식화, 예약 저장, 결제 연동, 기업(테넌트) 분리.</p>
+        </article>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner"><span>COSTOOL</span><span>전달용 프로토타입</span></div>
+  </footer>
+
+  <script>
+    const items = [
+      { t: "회원·권한 (로그인/관리자)", pct: 90, s: "done", l: "완료" },
+      { t: "상품 카탈로그·재고 UI", pct: 55, s: "wip", l: "진행중" },
+      { t: "주문·결제 연동", pct: 40, s: "wip", l: "진행중" },
+      { t: "예약·슬롯 캘린더", pct: 35, s: "wip", l: "진행중" },
+      { t: "멀티테넌트(기업별 스토어)", pct: 15, s: "plan", l: "예정" },
+      { t: "실결제 PG·정산", pct: 10, s: "plan", l: "예정" },
+      { t: "SaaS 구독 과금", pct: 5, s: "plan", l: "예정" }
+    ];
+    document.getElementById("roadmap").innerHTML = items.map((x, i) => `
+      <div class="progress-item">
+        <div style="display:flex;justify-content:space-between;gap:8px;flex-wrap:wrap">
+          <strong>${i + 1}. ${x.t}</strong>
+          <span class="badge badge-${x.s}">${x.l} · ${x.pct}%</span>
+        </div>
+        <div class="progress-bar"><i style="width:${x.pct}%"></i></div>
+      </div>
+    `).join("");
+  </script>
+</body>
+</html>

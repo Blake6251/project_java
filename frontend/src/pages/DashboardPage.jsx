@@ -5,6 +5,12 @@ import { useWebSocket } from "../hooks/useWebSocket.js";
 import OrderStatusBadge from "../components/OrderStatusBadge.jsx";
 
 const STATUSES = ["CREATED", "IN_PROGRESS", "COMPLETED", "CANCELLED"];
+const STATUS_KO = {
+  CREATED: "접수",
+  IN_PROGRESS: "처리중",
+  COMPLETED: "완료",
+  CANCELLED: "취소"
+};
 
 export default function DashboardPage() {
   const fetchOrders = useOrderStore((s) => s.fetchOrders);
@@ -40,7 +46,6 @@ export default function DashboardPage() {
     }
   }, []);
 
-  // 최초 로드 (fetchOrders 참조 변화로 이펙트 반복 방지)
   useEffect(() => {
     useOrderStore.getState().fetchOrders({ page: 0 });
   }, []);
@@ -62,135 +67,148 @@ export default function DashboardPage() {
   };
 
   return (
-    <div style={{ maxWidth: 960, margin: "0 auto", padding: 16 }}>
+    <div className="page">
       {toast && (
         <div
+          className="panel"
           style={{
             position: "fixed",
-            top: 16,
+            top: 72,
             left: "50%",
             transform: "translateX(-50%)",
-            background: "#333",
-            color: "#fff",
-            padding: "12px 24px",
-            borderRadius: 8,
-            zIndex: 1000
+            zIndex: 1000,
+            background: "#0b1c17",
+            color: "#f4fff9",
+            padding: "0.85rem 1.2rem"
           }}
         >
           {toast}
         </div>
       )}
 
-      <h1>관리자 대시보드</h1>
+      <section className="section" style={{ marginTop: "1rem" }}>
+        <div style={{ display: "flex", justifyContent: "space-between", gap: 12, flexWrap: "wrap" }}>
+          <div>
+            <h2>관리자 대시보드</h2>
+            <p className="lead">주문 접수·상태 관리 · 실시간 알림(WebSocket) 연결</p>
+          </div>
+          <span className="badge badge-wip">예약 캘린더 관리 뷰 — 다음 스프린트</span>
+        </div>
 
-      <div style={{ display: "flex", gap: 12, marginBottom: 16, flexWrap: "wrap" }}>
-        <select
-          value={filterStatus}
-          onChange={(e) => setFilterStatus(e.target.value)}
-          style={{ padding: 8 }}
-        >
-          <option value="">전체 상태</option>
-          {STATUSES.map((s) => (
-            <option key={s} value={s}>
-              {s}
-            </option>
-          ))}
-        </select>
-        <input
-          placeholder="메뉴명 검색"
-          value={filterMenu}
-          onChange={(e) => setFilterMenu(e.target.value)}
-          style={{ padding: 8, minWidth: 160 }}
-        />
-        <button
-          type="button"
-          onClick={() =>
-            fetchOrders({
-              page: 0,
-              status: filterStatus || undefined,
-              menuName: filterMenu || undefined
-            })
-          }
-        >
-          검색
-        </button>
-      </div>
+        <div className="panel" style={{ marginBottom: "1rem" }}>
+          <div className="cta-row">
+            <select value={filterStatus} onChange={(e) => setFilterStatus(e.target.value)}>
+              <option value="">전체 상태</option>
+              {STATUSES.map((s) => (
+                <option key={s} value={s}>
+                  {STATUS_KO[s]}
+                </option>
+              ))}
+            </select>
+            <input
+              placeholder="상품명 검색"
+              value={filterMenu}
+              onChange={(e) => setFilterMenu(e.target.value)}
+            />
+            <button
+              type="button"
+              className="btn btn-primary"
+              onClick={() =>
+                fetchOrders({
+                  page: 0,
+                  status: filterStatus || undefined,
+                  menuName: filterMenu || undefined
+                })
+              }
+            >
+              검색
+            </button>
+            <button type="button" className="btn btn-secondary" onClick={reload}>
+              새로고침
+            </button>
+          </div>
+        </div>
 
-      {loading && <p>로딩 중…</p>}
-      {error && <p style={{ color: "crimson" }}>{error}</p>}
+        {loading && <p className="muted">로딩 중…</p>}
+        {error && <p className="error-text">{error}</p>}
 
-      <table style={{ width: "100%", borderCollapse: "collapse" }}>
-        <thead>
-          <tr style={{ textAlign: "left", borderBottom: "2px solid #ccc" }}>
-            <th>ID</th>
-            <th>메뉴</th>
-            <th>수량</th>
-            <th>고객</th>
-            <th>상태</th>
-            <th>액션</th>
-          </tr>
-        </thead>
-        <tbody>
-          {orders.map((o) => (
-            <tr key={o.id} style={{ borderBottom: "1px solid #eee" }}>
-              <td>{o.id}</td>
-              <td>{o.menuName}</td>
-              <td>{o.quantity}</td>
-              <td>{o.username}</td>
-              <td>
-                <OrderStatusBadge status={o.status} />
-              </td>
-              <td>
-                {STATUSES.filter((s) => s !== o.status).map((s) => (
-                  <button
-                    key={s}
-                    type="button"
-                    style={{ marginRight: 4, fontSize: 11 }}
-                    onClick={() => changeStatus(o.id, s)}
-                  >
-                    →{s}
-                  </button>
-                ))}
-              </td>
-            </tr>
-          ))}
-        </tbody>
-      </table>
+        <div className="panel table-wrap">
+          <table className="data">
+            <thead>
+              <tr>
+                <th>ID</th>
+                <th>상품</th>
+                <th>수량</th>
+                <th>고객</th>
+                <th>상태</th>
+                <th>액션</th>
+              </tr>
+            </thead>
+            <tbody>
+              {orders.map((o) => (
+                <tr key={o.id}>
+                  <td>{o.id}</td>
+                  <td>{o.menuName}</td>
+                  <td>{o.quantity}</td>
+                  <td>{o.username}</td>
+                  <td>
+                    <OrderStatusBadge status={o.status} />
+                  </td>
+                  <td>
+                    <div className="cta-row">
+                      {STATUSES.filter((s) => s !== o.status).map((s) => (
+                        <button
+                          key={s}
+                          type="button"
+                          className="btn btn-secondary"
+                          style={{ padding: "0.35rem 0.65rem", fontSize: "0.8rem" }}
+                          onClick={() => changeStatus(o.id, s)}
+                        >
+                          →{STATUS_KO[s]}
+                        </button>
+                      ))}
+                    </div>
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
 
-      <div style={{ marginTop: 16, display: "flex", gap: 8 }}>
-        <button
-          type="button"
-          disabled={currentPage <= 0}
-          onClick={() =>
-            fetchOrders({
-              page: currentPage - 1,
-              status: filterStatus || undefined,
-              menuName: filterMenu || undefined
-            })
-          }
-        >
-          이전
-        </button>
-        <span>
-          {currentPage + 1} / {Math.max(totalPages, 1)}
-        </span>
-        <button
-          type="button"
-          disabled={currentPage >= totalPages - 1}
-          onClick={() =>
-            fetchOrders({
-              page: currentPage + 1,
-              status: filterStatus || undefined,
-              menuName: filterMenu || undefined
-            })
-          }
-        >
-          다음
-        </button>
-        <button type="button" onClick={reload}>
-          새로고침
-        </button>
-      </div>
+        <div className="cta-row" style={{ marginTop: 12 }}>
+          <button
+            type="button"
+            className="btn btn-secondary"
+            disabled={currentPage <= 0}
+            onClick={() =>
+              fetchOrders({
+                page: currentPage - 1,
+                status: filterStatus || undefined,
+                menuName: filterMenu || undefined
+              })
+            }
+          >
+            이전
+          </button>
+          <span className="muted">
+            {currentPage + 1} / {Math.max(totalPages, 1)}
+          </span>
+          <button
+            type="button"
+            className="btn btn-secondary"
+            disabled={currentPage >= totalPages - 1}
+            onClick={() =>
+              fetchOrders({
+                page: currentPage + 1,
+                status: filterStatus || undefined,
+                menuName: filterMenu || undefined
+              })
+            }
+          >
+            다음
+          </button>
+        </div>
+      </section>
     </div>
   );
 }

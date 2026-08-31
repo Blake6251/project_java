@@ -1,0 +1,116 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>COSTOOL — 기업용 판매·예약 SaaS (개발 중)</title>
+  <link rel="stylesheet" href="./assets/styles.css" />
+</head>
+<body>
+  <div class="dev-banner">
+    <strong>COSTOOL SaaS 0.3.0-beta · 개발 진행 중</strong>
+    <span>전달용 로컬 프로토타입 · 인터넷/서버 없이 열람 가능</span>
+  </div>
+
+  <nav class="nav">
+    <a class="brand" href="./index.html">
+      <img src="./assets/logo.png" alt="COSTOOL" />
+    </a>
+    <div class="nav-links">
+      <a class="active" href="./index.html">홈</a>
+      <a href="./products.html">상품</a>
+      <a href="./reservations.html">예약</a>
+      <a href="./roadmap.html">개발현황</a>
+    </div>
+    <div class="nav-spacer"></div>
+    <a class="btn btn-ghost" href="./login.html">로그인</a>
+    <a class="btn btn-primary" href="./login.html">시작하기</a>
+  </nav>
+
+  <main class="page">
+    <section class="hero">
+      <div class="hero-visual" aria-hidden="true"></div>
+      <div class="kicker">중소·중견 기업을 위한 B2B 플랫폼</div>
+      <h1>COSTOOL</h1>
+      <p>
+        기업이 자사 물품을 판매하고, 상담·설치·방문 예약을 받는
+        <strong>범용 SaaS</strong>를 구축 중입니다.
+        현재 화면 프로토타입 단계이며, 일부 기능은 개발 중입니다.
+      </p>
+      <div class="cta-row">
+        <a class="btn btn-primary" href="./products.html">상품 둘러보기</a>
+        <a class="btn btn-secondary" href="./reservations.html">예약 체험</a>
+        <a class="btn btn-ghost" href="./roadmap.html">개발 로드맵</a>
+      </div>
+      <div class="cta-row">
+        <span class="badge badge-wip">프로토타입</span>
+        <span class="badge badge-done">인증 UI</span>
+        <span class="badge badge-wip">판매·예약 모듈 진행중</span>
+      </div>
+    </section>
+
+    <section class="section">
+      <h2>한 플랫폼에서</h2>
+      <p class="lead">판매와 예약을 따로 두지 않고, 기업 운영 흐름에 맞게 묶습니다.</p>
+      <div class="grid-3">
+        <article class="panel">
+          <span class="badge">모듈</span>
+          <h3>물품 판매</h3>
+          <p>카탈로그·재고·주문 흐름을 한곳에서. B2B 납품·소량 판매 대응.</p>
+        </article>
+        <article class="panel">
+          <span class="badge">모듈</span>
+          <h3>예약·스케줄</h3>
+          <p>상담·설치·방문·장비 대여 등 시간 슬롯 예약을 웹에서 접수.</p>
+        </article>
+        <article class="panel">
+          <span class="badge">모듈</span>
+          <h3>기업 관리자</h3>
+          <p>주문·예약 현황, 알림, 통계를 관리자 화면에서 확인 (확장 개발 중).</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="section">
+      <h2>지금 개발 단계</h2>
+      <p class="lead">서류·실증용으로 동작 가능한 껍데기 + 핵심 화면 구성.</p>
+      <div class="panel progress-list">
+        <div class="progress-item">
+          <div style="display:flex;justify-content:space-between;gap:8px">
+            <span>회원·권한 (로그인/관리자)</span><span class="badge badge-done">90%</span>
+          </div>
+          <div class="progress-bar"><i style="width:90%"></i></div>
+        </div>
+        <div class="progress-item">
+          <div style="display:flex;justify-content:space-between;gap:8px">
+            <span>상품 카탈로그·재고 UI</span><span class="badge badge-wip">55%</span>
+          </div>
+          <div class="progress-bar"><i style="width:55%"></i></div>
+        </div>
+        <div class="progress-item">
+          <div style="display:flex;justify-content:space-between;gap:8px">
+            <span>주문·결제 연동</span><span class="badge badge-wip">40%</span>
+          </div>
+          <div class="progress-bar"><i style="width:40%"></i></div>
+        </div>
+        <div class="progress-item">
+          <div style="display:flex;justify-content:space-between;gap:8px">
+            <span>예약·슬롯 캘린더</span><span class="badge badge-wip">35%</span>
+          </div>
+          <div class="progress-bar"><i style="width:35%"></i></div>
+        </div>
+      </div>
+      <div class="wip-note">
+        멀티테넌트(기업별 스토어)·실결제 PG·구독 과금은 다음 스프린트 예정입니다.
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+      <span>COSTOOL · 기업용 물품 판매·예약 SaaS 프로토타입</span>
+      <span>로컬 전달용 · 서버 불필요</span>
+    </div>
+  </footer>
+</body>
+</html>

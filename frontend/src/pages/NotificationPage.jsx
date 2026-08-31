@@ -8,7 +8,6 @@ export default function NotificationPage() {
   const markReadLocal = useNotificationStore((s) => s.markReadLocal);
   const notifications = useNotificationStore((s) => s.notifications);
   const totalPages = useNotificationStore((s) => s.totalPages);
-  const currentPage = useNotificationStore((s) => s.currentPage);
   const unreadCount = useNotificationStore((s) => s.unreadCount);
   const loading = useNotificationStore((s) => s.loading);
   const error = useNotificationStore((s) => s.error);
@@ -29,55 +28,61 @@ export default function NotificationPage() {
   };
 
   return (
-    <div style={{ maxWidth: 720, margin: "0 auto", padding: 16 }}>
-      <h1>알림</h1>
-      <p>미확인: {unreadCount}건</p>
-      {loading && <p>로딩…</p>}
-      {error && <p style={{ color: "crimson" }}>{error}</p>}
-      <ul style={{ listStyle: "none", padding: 0 }}>
-        {notifications.map((n) => {
-          const read = n.isRead ?? n.read;
-          return (
-          <li
-            key={n.id}
-            style={{
-              border: "1px solid #ddd",
-              padding: 12,
-              marginBottom: 8,
-              opacity: read ? 0.7 : 1
-            }}
+    <div className="page">
+      <section className="section" style={{ marginTop: "1rem" }}>
+        <h2>알림</h2>
+        <p className="lead">주문 이벤트 알림 · 미확인 {unreadCount}건</p>
+
+        {loading && <p className="muted">로딩…</p>}
+        {error && <p className="error-text">{error}</p>}
+
+        <div className="progress-list">
+          {notifications.map((n) => {
+            const read = n.isRead ?? n.read;
+            return (
+              <article key={n.id} className="panel" style={{ opacity: read ? 0.72 : 1 }}>
+                <div style={{ display: "flex", justifyContent: "space-between", gap: 12 }}>
+                  <div>
+                    <span className="badge">{n.type}</span>
+                    <h3 style={{ marginTop: 8 }}>주문 #{n.orderId}</h3>
+                    <p>{n.message}</p>
+                    <div className="muted" style={{ marginTop: 6, fontSize: "0.85rem" }}>
+                      {n.createdAt}
+                    </div>
+                  </div>
+                  {!read && (
+                    <button type="button" className="btn btn-secondary" onClick={() => markRead(n.id)}>
+                      읽음
+                    </button>
+                  )}
+                </div>
+              </article>
+            );
+          })}
+        </div>
+
+        <div className="cta-row" style={{ marginTop: 12 }}>
+          <button
+            type="button"
+            className="btn btn-secondary"
+            disabled={page <= 0}
+            onClick={() => setPage((p) => p - 1)}
           >
-            <div style={{ display: "flex", justifyContent: "space-between", alignItems: "start" }}>
-              <div>
-                <strong>{n.type}</strong> — 주문 #{n.orderId}
-                <div style={{ fontSize: 14, marginTop: 4 }}>{n.message}</div>
-                <div style={{ fontSize: 12, color: "#666" }}>{n.createdAt}</div>
-              </div>
-              {!read && (
-                <button type="button" onClick={() => markRead(n.id)}>
-                  읽음
-                </button>
-              )}
-            </div>
-          </li>
-        );
-        })}
-      </ul>
-      <div style={{ display: "flex", gap: 8 }}>
-        <button type="button" disabled={page <= 0} onClick={() => setPage((p) => p - 1)}>
-          이전
-        </button>
-        <span>
-          {page + 1} / {Math.max(totalPages, 1)}
-        </span>
-        <button
-          type="button"
-          disabled={page >= totalPages - 1}
-          onClick={() => setPage((p) => p + 1)}
-        >
-          다음
-        </button>
-      </div>
+            이전
+          </button>
+          <span className="muted">
+            {page + 1} / {Math.max(totalPages, 1)}
+          </span>
+          <button
+            type="button"
+            className="btn btn-secondary"
+            disabled={page >= totalPages - 1}
+            onClick={() => setPage((p) => p + 1)}
+          >
+            다음
+          </button>
+        </div>
+      </section>
     </div>
   );
 }

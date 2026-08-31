@@ -17,7 +17,9 @@ api.interceptors.request.use((config) => {
   return config;
 });
 
-// 401 시 로그아웃 처리 후 로그인 페이지로
+// 401 시 토큰 정리. 공개 페이지는 로그인으로 강제 이동하지 않음
+const PUBLIC_PATHS = ["/", "/products", "/reservations", "/roadmap", "/login", "/register"];
+
 api.interceptors.response.use(
   (res) => res,
   (err) => {
@@ -25,7 +27,9 @@ api.interceptors.response.use(
       localStorage.removeItem("token");
       localStorage.removeItem("username");
       localStorage.removeItem("role");
-      if (!window.location.pathname.startsWith("/login")) {
+      const path = window.location.pathname;
+      const isPublic = PUBLIC_PATHS.includes(path);
+      if (!isPublic && !path.startsWith("/login")) {
         window.location.href = "/login";
       }
     }

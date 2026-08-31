@@ -3,10 +3,26 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Portal Frontend</title>
+    <meta
+      name="description"
+      content="COSTOOL — 기업용 물품 판매·예약 SaaS 플랫폼 (개발 중)"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+KR:wght@400;500;600;700&family=Syne:wght@600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <title>COSTOOL — 기업용 판매·예약 SaaS</title>
   </head>
   <body>
     <div id="root"></div>
+    <script>
+      // sockjs-client 호환 (global is not defined 방지)
+      if (typeof global === "undefined") {
+        window.global = window;
+      }
+    </script>
     <script type="module" src="/src/main.jsx"></script>
   </body>
 </html>

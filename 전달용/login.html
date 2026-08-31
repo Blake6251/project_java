@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>로그인 — COSTOOL</title>
+  <link rel="stylesheet" href="./assets/styles.css" />
+</head>
+<body>
+  <div class="dev-banner">
+    <strong>COSTOOL SaaS 0.3.0-beta · 개발 진행 중</strong>
+    <span>로그인 UI 시연 (서버 연동 없이 동작)</span>
+  </div>
+  <nav class="nav">
+    <a class="brand" href="./index.html"><img src="./assets/logo.png" alt="COSTOOL" /></a>
+    <div class="nav-links">
+      <a href="./index.html">홈</a>
+      <a href="./products.html">상품</a>
+      <a href="./reservations.html">예약</a>
+      <a href="./roadmap.html">개발현황</a>
+    </div>
+    <div class="nav-spacer"></div>
+  </nav>
+
+  <main class="page">
+    <div class="auth-wrap panel">
+      <img src="./assets/logo.png" alt="COSTOOL" style="height:36px;margin-bottom:0.6rem" />
+      <h1 style="margin:0 0 0.35rem;color:var(--navy)">로그인</h1>
+      <p style="margin:0;color:var(--muted)">전달용 데모 화면입니다. 실제 인증 서버는 개발 환경에서 연동됩니다.</p>
+      <form class="form-stack" style="margin-top:1.1rem" id="loginForm">
+        <label>아이디
+          <input type="text" placeholder="demo" required />
+        </label>
+        <label>비밀번호
+          <input type="password" placeholder="••••••••" required />
+        </label>
+        <button class="btn btn-primary" type="submit">로그인 (데모)</button>
+        <div class="wip-note" id="msg" style="display:none">
+          데모 로그인입니다. 이 전달 패키지에는 서버가 포함되어 있지 않습니다.
+        </div>
+      </form>
+    </div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner"><span>COSTOOL</span><span>전달용 프로토타입</span></div>
+  </footer>
+
+  <script>
+    document.getElementById("loginForm").addEventListener("submit", (e) => {
+      e.preventDefault();
+      document.getElementById("msg").style.display = "block";
+    });
+  </script>
+</body>
+</html>

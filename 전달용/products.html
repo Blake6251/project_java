@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>상품 — COSTOOL</title>
+  <link rel="stylesheet" href="./assets/styles.css" />
+</head>
+<body>
+  <div class="dev-banner">
+    <strong>COSTOOL SaaS 0.3.0-beta · 개발 진행 중</strong>
+    <span>상품 카탈로그 UI 시연 (목 데이터)</span>
+  </div>
+  <nav class="nav">
+    <a class="brand" href="./index.html"><img src="./assets/logo.png" alt="COSTOOL" /></a>
+    <div class="nav-links">
+      <a href="./index.html">홈</a>
+      <a class="active" href="./products.html">상품</a>
+      <a href="./reservations.html">예약</a>
+      <a href="./roadmap.html">개발현황</a>
+    </div>
+    <div class="nav-spacer"></div>
+    <a class="btn btn-primary" href="./login.html">로그인</a>
+  </nav>
+
+  <main class="page">
+    <section class="section" style="margin-top:1rem">
+      <div style="display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap">
+        <div>
+          <h2>상품 카탈로그</h2>
+          <p class="lead">데모 상품입니다. 실제 테넌트별 상품 API는 연동 개발 중.</p>
+        </div>
+        <span class="badge badge-wip">UI 시연 · API 연동 예정</span>
+      </div>
+
+      <div class="grid-3" id="productGrid"></div>
+      <div class="wip-note">장바구니·결제·재고 차감은 다음 개발 단계에서 연결합니다.</div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+      <span>COSTOOL</span>
+      <span>전달용 프로토타입</span>
+    </div>
+  </footer>
+
+  <script>
+    const products = [
+      { name: "SKD-61 밀핀 (1단)", cat: "금형부품", price: "견적 (기성품 사용)", desc: "내열·직진도 안정형 표준 밀핀" },
+      { name: "파트리스트 전체", cat: "금형부품", price: "견적 (도면 첨부)", desc: "금형에 사용되는 가공건 일괄 의뢰" },
+      { name: "외주가공", cat: "금형부품", price: "견적 (도면 첨부)", desc: "선반, 밀링, 와이어 등" },
+      { name: "엔드밀 류", cat: "절삭공구", price: "견적", desc: "SGSO" },
+      { name: "인서트 류", cat: "절삭공구", price: "견적", desc: "ABP" },
+      { name: "척 류", cat: "절삭공구", price: "견적", desc: "ABP" },
+      { name: "사각 밀핀", cat: "금형부품", price: "견적 (기성품 사용)", desc: "정밀 가공 사각 규격" },
+      { name: "슬리브 핀", cat: "금형부품", price: "견적 (기성품 사용)", desc: "현장 교체용 슬리브" },
+      { name: "코아핀 세트", cat: "금형부품", price: "견적 (기성품 사용)", desc: "다규격 번들 패키지" },
+      { name: "이단 밀핀", cat: "금형부품", price: "견적 (기성품 사용)", desc: "단차 가공 밀핀" },
+      { name: "드릴 류", cat: "절삭공구", price: "견적", desc: "SGSO / 일반·초경" },
+      { name: "리머·탭 류", cat: "절삭공구", price: "견적", desc: "정밀 홀 가공용" }
+    ];
+    const grid = document.getElementById("productGrid");
+    grid.innerHTML = products.map((p) => `
+      <article class="panel">
+        <div class="product-thumb"><span class="badge">${p.cat}</span></div>
+        <h3>${p.name}</h3>
+        <p>${p.desc}</p>
+        <div class="price">${p.price}</div>
+        <button class="btn btn-secondary" disabled style="margin-top:0.7rem;width:100%">장바구니 (준비 중)</button>
+      </article>
+    `).join("");
+  </script>
+</body>
+</html>

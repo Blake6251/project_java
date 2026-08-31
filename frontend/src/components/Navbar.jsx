@@ -1,16 +1,17 @@
 import { useEffect } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, NavLink, useNavigate } from "react-router-dom";
 import { useAuth } from "../hooks/useAuth.js";
 import { useAuthStore } from "../store/authStore.js";
 import { useNotificationStore } from "../store/notificationStore.js";
 import api from "../api/axios.js";
+import { APP_META } from "../data/demo.js";
 
 export default function Navbar() {
   const { isAuthenticated, isAdmin, username } = useAuth();
   const logoutLocal = useAuthStore((s) => s.logoutLocal);
   const unreadCount = useNotificationStore((s) => s.unreadCount);
-  const navigate = useNavigate();
   const fetchUnread = useNotificationStore((s) => s.fetchUnread);
+  const navigate = useNavigate();
 
   useEffect(() => {
     if (isAuthenticated && isAdmin) {
@@ -25,39 +26,50 @@ export default function Navbar() {
     try {
       await api.post("/api/auth/logout");
     } catch {
-      /* 서버 실패해도 로컬 토큰은 제거 */
+      /* ignore */
     }
     logoutLocal();
-    navigate("/login");
+    navigate("/");
   };
 
-  if (!isAuthenticated) return null;
-
   return (
-    <nav
-      style={{
-        display: "flex",
-        gap: 16,
-        alignItems: "center",
-        padding: "12px 20px",
-        borderBottom: "1px solid #ddd",
-        marginBottom: 16
-      }}
-    >
-      <strong>{username}</strong>
-      {isAdmin ? (
+    <nav className="site-nav">
+      <Link to="/" className="brand">
+        <img src="/logo.png" alt="COSTOOL" style={{ height: 32, width: "auto", display: "block" }} />
+      </Link>
+
+      <div className="nav-links">
+        <NavLink to="/products">상품</NavLink>
+        <NavLink to="/reservations">예약</NavLink>
+        <NavLink to="/roadmap">개발현황</NavLink>
+        {isAuthenticated && !isAdmin && <NavLink to="/shop">내 주문</NavLink>}
+        {isAuthenticated && isAdmin && (
+          <>
+            <NavLink to="/dashboard">관리자</NavLink>
+            <NavLink to="/notifications">알림{unreadCount > 0 ? ` (${unreadCount})` : ""}</NavLink>
+          </>
+        )}
+      </div>
+
+      <div className="nav-spacer" />
+
+      {isAuthenticated ? (
         <>
-          <Link to="/dashboard">대시보드</Link>
-          <Link to="/notifications">
-            알림 {unreadCount > 0 ? `(${unreadCount})` : ""}
-          </Link>
+          <span className="badge">{username}</span>
+          <button type="button" className="btn btn-secondary" onClick={handleLogout}>
+            로그아웃
+          </button>
         </>
       ) : (
-        <Link to="/order">주문</Link>
+        <>
+          <Link to="/login" className="btn btn-ghost">
+            로그인
+          </Link>
+          <Link to="/register" className="btn btn-primary">
+            시작하기
+          </Link>
+        </>
       )}
-      <button type="button" onClick={handleLogout} style={{ marginLeft: "auto" }}>
-        로그아웃
-      </button>
     </nav>
   );
 }
