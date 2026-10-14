@@ -1,45 +1,55 @@
 import { Link } from "react-router-dom";
-import { APP_META, FEATURES, ROADMAP } from "../data/demo.js";
+import { APP_META, COMPANY, HIGHLIGHTS, VALUE_PROPS, DEMO_PRODUCTS } from "../data/demo.js";
 
 export default function LandingPage() {
-  const done = ROADMAP.filter((r) => r.state === "done").length;
-  const wip = ROADMAP.filter((r) => r.state === "wip").length;
+  const preview = DEMO_PRODUCTS.slice(0, 6);
 
   return (
     <div className="page">
       <section className="hero">
+        <div className="hero-visual" aria-hidden="true" />
         <div className="hero-kicker rise">{APP_META.tagline}</div>
         <h1 className="rise rise-delay-1">{APP_META.name}</h1>
         <p className="rise rise-delay-2">
-          기업이 자사 물품을 판매하고, 상담·설치·방문 예약을 받는{" "}
-          <strong>범용 B2B SaaS</strong>를 구축 중입니다. 현재 로컬 프로토타입으로
-          핵심 화면과 인증·주문 연동을 검증하고 있습니다.
+          불필요한 유통 마진을 줄이고, <strong>직접 소싱으로 최대 40% 원가 절감</strong>을
+          추구합니다. 금형부품·절삭공구 카탈로그를 확인하고 견적을 요청하세요.
         </p>
         <div className="cta-row rise rise-delay-3">
           <Link to="/products" className="btn btn-primary">
-            상품 둘러보기
+            상품 카탈로그
           </Link>
+          <a href={COMPANY.phoneHref} className="btn btn-gold">
+            전화 문의 {COMPANY.phone}
+          </a>
           <Link to="/reservations" className="btn btn-secondary">
-            예약 체험
-          </Link>
-          <Link to="/roadmap" className="btn btn-ghost">
-            개발 로드맵
+            상담 예약
           </Link>
         </div>
         <div className="cta-row">
-          <span className="badge badge-wip">프로토타입 v{APP_META.version}</span>
-          <span className="badge badge-done">완료 {done}</span>
-          <span className="badge badge-wip">진행 {wip}</span>
+          <span className="badge badge-gold">High Quality</span>
+          <span className="badge">Reasonable Price</span>
+          <span className="badge">Precision</span>
         </div>
       </section>
 
       <section className="section">
-        <h2>한 플랫폼에서</h2>
-        <p className="lead">판매와 예약을 따로 두지 않고, 중소기업 운영 흐름에 맞게 묶습니다.</p>
         <div className="grid-3">
-          {FEATURES.map((f) => (
+          {HIGHLIGHTS.map((h) => (
+            <article key={h.label} className="panel">
+              <div className="muted">{h.label}</div>
+              <div className="stat-num">{h.value}</div>
+            </article>
+          ))}
+        </div>
+      </section>
+
+      <section className="section">
+        <h2>왜 COSTOOL인가</h2>
+        <p className="lead">금형 현장 납품에 맞춘 부품·공구를, 유통 단계를 줄여 제공합니다.</p>
+        <div className="grid-3">
+          {VALUE_PROPS.map((f) => (
             <article key={f.title} className="panel">
-              <span className="badge">모듈</span>
+              <span className="badge">강점</span>
               <h3>{f.title}</h3>
               <p>{f.body}</p>
             </article>
@@ -48,27 +58,63 @@ export default function LandingPage() {
       </section>
 
       <section className="section">
-        <h2>지금 개발 단계</h2>
-        <p className="lead">서류·실증용으로 동작 가능한 껍데기 + 일부 실연동(로그인·주문 API).</p>
-        <div className="panel">
-          <div className="progress-list">
-            {ROADMAP.slice(0, 4).map((item) => (
-              <div key={item.id} className="progress-item">
-                <div style={{ display: "flex", justifyContent: "space-between", gap: 8 }}>
-                  <span>{item.title}</span>
-                  <span className={`badge badge-${item.state === "done" ? "done" : item.state === "wip" ? "wip" : "plan"}`}>
-                    {item.pct}%
-                  </span>
-                </div>
-                <div className="progress-bar">
-                  <i style={{ width: `${item.pct}%` }} />
-                </div>
+        <div style={{ display: "flex", justifyContent: "space-between", gap: 12, flexWrap: "wrap" }}>
+          <div>
+            <h2>주요 상품</h2>
+            <p className="lead">기성품 견적과 도면 기반 가공 의뢰를 함께 안내합니다.</p>
+          </div>
+          <Link to="/products" className="btn btn-secondary">
+            전체 보기
+          </Link>
+        </div>
+        <div className="grid-3">
+          {preview.map((p) => (
+            <article key={p.id} className="panel product-card">
+              <div className="product-thumb">
+                <span className="badge">{p.category}</span>
               </div>
-            ))}
-          </div>
-          <div className="wip-note">
-            멀티테넌트·실결제 PG·구독 과금은 다음 스프린트 예정입니다. 화면은 시연용으로 먼저 열어 두었습니다.
-          </div>
+              <h3>{p.name}</h3>
+              <p>{p.desc}</p>
+              <div className="price">{p.priceLabel}</div>
+            </article>
+          ))}
+        </div>
+      </section>
+
+      <section className="section" id="contact">
+        <h2>문의</h2>
+        <p className="lead">견적·도면·방문 상담이 필요하면 연락 주세요.</p>
+        <div className="grid-2">
+          <article className="panel">
+            <span className="badge">Contact</span>
+            <h3>{COMPANY.brand}</h3>
+            <p style={{ marginTop: 8 }}>
+              전화: <a href={COMPANY.phoneHref}><strong>{COMPANY.phone}</strong></a>
+              <br />
+              주소: {COMPANY.address}
+              <br />
+              운영: {COMPANY.partner}
+            </p>
+            <div className="cta-row" style={{ marginTop: 14 }}>
+              <a href={COMPANY.phoneHref} className="btn btn-primary">
+                바로 전화하기
+              </a>
+              <Link to="/reservations" className="btn btn-secondary">
+                상담 일정 잡기
+              </Link>
+            </div>
+          </article>
+          <article className="panel">
+            <span className="badge badge-gold">안내</span>
+            <h3>견적 준비물</h3>
+            <p style={{ marginTop: 8 }}>
+              · 기성품: 규격·수량
+              <br />
+              · 파트리스트/외주가공: 도면 첨부
+              <br />
+              · 절삭공구: 브랜드·모델·수량
+            </p>
+          </article>
         </div>
       </section>
     </div>

@@ -1,20 +1,47 @@
-/** 국가지원 서류·로컬 데모용 목 데이터 (백엔드 미연동 OK) */
+/** COSTOOL 홍보·카탈로그용 프론트 데이터 */
 
 export const APP_META = {
   name: "COSTOOL",
-  version: "0.3.0-beta",
-  tagline: "기업용 물품 판매·예약 SaaS",
-  status: "개발 진행 중"
+  version: "1.0",
+  tagline: "금형부품 · 절삭공구 전문",
+  status: "공식 소개"
 };
 
+export const COMPANY = {
+  brand: "COSTOOL",
+  partner: "바로볼트 (BARO BOLT)",
+  phone: "031-366-5576",
+  address: "경기도 화성시 팔탄면 온천로 1길 162호",
+  phoneHref: "tel:0313665576"
+};
+
+export const VALUE_PROPS = [
+  {
+    title: "직접 소싱",
+    body: "불필요한 유통 마진을 줄이고, 현장 납품에 맞는 가격으로 제공합니다."
+  },
+  {
+    title: "품질·공차",
+    body: "내열·직진도·열처리 품질을 기준으로 금형 부품을 선별합니다."
+  },
+  {
+    title: "견적·가공 의뢰",
+    body: "기성품 견적은 물론, 도면 첨부 기반 파트리스트·외주가공 의뢰도 받습니다."
+  }
+];
+
+export const HIGHLIGHTS = [
+  { label: "원가 절감", value: "최대 40%" },
+  { label: "주력", value: "SKD-61 밀핀" },
+  { label: "대응", value: "금형부품 · 절삭공구" }
+];
+
 export const ROADMAP = [
-  { id: 1, title: "회원·권한 (로그인/관리자)", pct: 90, state: "done" },
-  { id: 2, title: "상품 카탈로그·재고 UI", pct: 55, state: "wip" },
+  { id: 1, title: "홍보 사이트·상품 카탈로그", pct: 80, state: "wip" },
+  { id: 2, title: "견적 문의·도면 첨부 플로우", pct: 25, state: "plan" },
   { id: 3, title: "주문·결제 연동", pct: 40, state: "wip" },
-  { id: 4, title: "예약·슬롯 캘린더", pct: 35, state: "wip" },
-  { id: 5, title: "멀티테넌트(기업별 스토어)", pct: 15, state: "plan" },
-  { id: 6, title: "실결제 PG·정산", pct: 10, state: "plan" },
-  { id: 7, title: "SaaS 구독 과금", pct: 5, state: "plan" }
+  { id: 4, title: "예약·상담 슬롯", pct: 35, state: "wip" },
+  { id: 5, title: "기업(테넌트) 분리", pct: 15, state: "plan" }
 ];
 
 export const DEMO_PRODUCTS = [
@@ -115,26 +142,13 @@ export const DEMO_SLOTS = [
 ];
 
 export const DEMO_RESOURCES = [
-  { id: "r1", name: "상담실 A", type: "공간" },
-  { id: "r2", name: "데모 부스 B", type: "공간" },
-  { id: "r3", name: "기술 지원 슬롯", type: "인력" },
-  { id: "r4", name: "출장 설치팀", type: "인력" }
+  { id: "r1", name: "기술 상담", type: "상담" },
+  { id: "r2", name: "도면 검토", type: "상담" },
+  { id: "r3", name: "방문 미팅", type: "방문" },
+  { id: "r4", name: "샘플 확인", type: "방문" }
 ];
 
-export const FEATURES = [
-  {
-    title: "물품 판매",
-    body: "카탈로그·재고·주문 흐름을 한곳에서. B2B 납품·소량 판매 모두 대응."
-  },
-  {
-    title: "예약·스케줄",
-    body: "상담·설치·방문·장비 대여 등 시간 슬롯 예약을 웹에서 접수."
-  },
-  {
-    title: "기업 관리자",
-    body: "주문·예약 현황, 알림, 통계를 관리자 화면에서 확인 (개발 확장 중)."
-  }
-];
+export const FEATURES = VALUE_PROPS;
 
 export function formatWon(n) {
   return new Intl.NumberFormat("ko-KR").format(n) + "원";

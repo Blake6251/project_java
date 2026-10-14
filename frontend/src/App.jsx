@@ -11,7 +11,7 @@ import RoadmapPage from "./pages/RoadmapPage.jsx";
 import ShopPage from "./pages/ShopPage.jsx";
 import DashboardPage from "./pages/DashboardPage.jsx";
 import NotificationPage from "./pages/NotificationPage.jsx";
-import { APP_META } from "./data/demo.js";
+import { APP_META, COMPANY } from "./data/demo.js";
 
 export default function App() {
   return (
@@ -33,10 +33,7 @@ export default function App() {
             </PrivateRoute>
           }
         />
-        <Route
-          path="/order"
-          element={<Navigate to="/shop" replace />}
-        />
+        <Route path="/order" element={<Navigate to="/shop" replace />} />
         <Route
           path="/dashboard"
           element={
@@ -59,8 +56,10 @@ export default function App() {
         <div className="footer-inner">
           <span>
             {APP_META.name} · {APP_META.tagline}
+            <br />
+            {COMPANY.address} · {COMPANY.phone}
           </span>
-          <span>로컬 프로토타입 · {APP_META.version}</span>
+          <span>{COMPANY.partner}</span>
         </div>
       </footer>
     </div>

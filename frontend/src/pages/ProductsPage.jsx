@@ -13,9 +13,9 @@ export default function ProductsPage() {
         <div style={{ display: "flex", justifyContent: "space-between", gap: 12, flexWrap: "wrap" }}>
           <div>
             <h2>상품 카탈로그</h2>
-            <p className="lead">데모 데이터입니다. 실제 테넌트별 상품 API는 연동 개발 중.</p>
+            <p className="lead">금형부품·절삭공구. 견적(기성품) 및 도면 첨부 의뢰 항목을 안내합니다.</p>
           </div>
-          <span className="badge badge-wip">UI 시연 · API 연동 예정</span>
+          <span className="badge badge-gold">견적 중심</span>
         </div>
 
         <div className="cta-row" style={{ marginBottom: "1rem" }}>
@@ -40,15 +40,15 @@ export default function ProductsPage() {
               <h3>{p.name}</h3>
               <p>{p.desc}</p>
               <div className="price">{p.priceLabel ?? "견적"}</div>
-              <button type="button" className="btn btn-secondary" disabled>
-                장바구니 (준비 중)
-              </button>
+              <a href="tel:0313665576" className="btn btn-secondary">
+                견적 문의
+              </a>
             </article>
           ))}
         </div>
 
         <div className="wip-note">
-          장바구니·결제·재고 차감은 백엔드 Product/Cart 도메인 추가 후 연결 예정입니다.
+          온라인 장바구니는 준비 중입니다. 당장 견적이 필요하면 전화(031-366-5576) 또는 상담예약을 이용해 주세요.
         </div>
       </section>
     </div>

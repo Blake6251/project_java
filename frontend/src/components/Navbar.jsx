@@ -4,7 +4,7 @@ import { useAuth } from "../hooks/useAuth.js";
 import { useAuthStore } from "../store/authStore.js";
 import { useNotificationStore } from "../store/notificationStore.js";
 import api from "../api/axios.js";
-import { APP_META } from "../data/demo.js";
+import { COMPANY } from "../data/demo.js";
 
 export default function Navbar() {
   const { isAuthenticated, isAdmin, username } = useAuth();
@@ -35,13 +35,13 @@ export default function Navbar() {
   return (
     <nav className="site-nav">
       <Link to="/" className="brand">
-        <img src="/logo.png" alt="COSTOOL" style={{ height: 32, width: "auto", display: "block" }} />
+        <img src="/logo.png" alt="COSTOOL" />
       </Link>
 
       <div className="nav-links">
         <NavLink to="/products">상품</NavLink>
-        <NavLink to="/reservations">예약</NavLink>
-        <NavLink to="/roadmap">개발현황</NavLink>
+        <NavLink to="/reservations">상담예약</NavLink>
+        <a href="/#contact">문의</a>
         {isAuthenticated && !isAdmin && <NavLink to="/shop">내 주문</NavLink>}
         {isAuthenticated && isAdmin && (
           <>
@@ -62,11 +62,11 @@ export default function Navbar() {
         </>
       ) : (
         <>
-          <Link to="/login" className="btn btn-ghost">
-            로그인
-          </Link>
-          <Link to="/register" className="btn btn-primary">
-            시작하기
+          <a href={COMPANY.phoneHref} className="btn btn-ghost">
+            {COMPANY.phone}
+          </a>
+          <Link to="/products" className="btn btn-primary">
+            카탈로그
           </Link>
         </>
       )}

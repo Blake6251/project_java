@@ -2,11 +2,11 @@ import { APP_META } from "../data/demo.js";
 
 export default function DevBanner() {
   return (
-    <div className="dev-banner">
+    <div className="promo-banner">
       <strong>
-        {APP_META.name} {APP_META.version} · {APP_META.status}
+        {APP_META.name} · {APP_META.tagline}
       </strong>
-      <span>COSTOOL 실증용 로컬 프로토타입 · 일부 기능은 UI 시연 단계입니다</span>
+      <span>직접 소싱 · 최대 40% 원가 절감 지향 · 견적 문의 환영</span>
     </div>
   );
 }

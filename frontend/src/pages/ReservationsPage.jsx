@@ -26,10 +26,10 @@ export default function ReservationsPage() {
       <section className="section" style={{ marginTop: "1rem" }}>
         <div style={{ display: "flex", justifyContent: "space-between", gap: 12, flexWrap: "wrap" }}>
           <div>
-            <h2>예약</h2>
-            <p className="lead">상담·설치·공간 대여 슬롯을 웹에서 받는 화면 프로토타입입니다.</p>
+            <h2>상담 예약</h2>
+            <p className="lead">기술 상담·도면 검토·방문 미팅 일정을 남겨 주세요.</p>
           </div>
-          <span className="badge badge-wip">로컬 UI 시연</span>
+          <span className="badge badge-gold">견적·상담</span>
         </div>
 
         <div className="grid-2">
